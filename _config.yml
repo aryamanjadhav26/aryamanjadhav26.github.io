@@ -7,7 +7,7 @@
 
 # Main Page Setup
 
-title: Aryaman's Portfolio # This is what shows up in the tab of the browser
+title: Aryaman Jadhav # This is what shows up in the tab of the browser
 
 
 
@@ -16,7 +16,9 @@ title: Aryaman's Portfolio # This is what shows up in the tab of the browser
 name: Aryaman Jadhav
 headline: Electrical Engineer | mmWave Radar & Embedded Systems
 description: >-
-  Aryaman Jadhav is an electrical engineer specializing in mmWave radar sensing, FPGA design, and embedded systems. Expert in CUDA parallel computing, hardware-constrained signal processing, and real-time sensor fusion with a track record of shipping production systems.
+  Electrical engineering portfolio. Radar, signal processing, embedded ML, hardware design.
+hero_intro: >-
+  Currently: trying to get a single-chip radar to see things it shouldn't, chasing a squat number that won't move, eating the same four meals on rotation, and convincing myself markets aren't just gaussians with extra steps.
   
 
 
@@ -47,63 +49,56 @@ external-links:    # input only your own url slug. The icons with missing entrie
 
 # Skills Section - Add the list of your Skills by categories/tools. The indentation for each level needs to be precise. 
 skills:
-  - category: Programming Languages
-    tools:
-      - C
-      - C++
-      - Python
-      - Java
   - category: Radar & Signal Processing
     tools:
-      - FMCW Radar
-      - Range-Doppler Processing
-      - CFAR Detection
-      - Clutter Filtering
-      - ADC Data Capture
-  - category: Parallel & Scientific Computing
+      - FMCW radar
+      - Raw ADC processing
+      - Range-Doppler
+      - CFAR detection
+      - Clutter suppression
+      - Human target isolation
+      - Radar-based pose estimation
+  - category: Perception, Localization & Control
     tools:
-      - CUDA
-      - OpenMP
-      - MPI
-      - MATLAB
-      - Simulink
-  - category: Frameworks & Libraries
+      - EKF state estimation
+      - Multi-sensor calibration
+      - RTK-grade localization
+      - Real-time perception on ROS2
+      - PID control
+  - category: Applied ML & Computer Vision
     tools:
+      - Cross-modal supervision
+      - CNN classification
+      - Image segmentation
       - PyTorch
       - OpenCV
-      - NumPy
-      - SciPy
-      - ROS2
-  - category: Hardware Design & RTL
+  - category: RF & Antenna Design
     tools:
-      - SystemVerilog
-      - RTL design & verification
-      - Vivado
-      - Cadence Virtuoso
-      - LTspice
-  - category: Prototyping Platforms
+      - Antenna array design
+      - EM co-simulation (HFSS / ADS)
+      - RF energy harvesting
+      - Microwave rectifier design
+  - category: Hardware Design
     tools:
-      - TI mmWave Radar
+      - SystemVerilog RTL & verification
+      - Pipelined microarchitecture
+      - ISA design
+      - Vitis HLS
+      - FPGA dataflow architectures
+      - Fixed-point arithmetic
+  - category: High-Performance Computing
+    tools:
+      - CUDA kernel development
+      - OpenMP / MPI parallelization
+      - FPGA acceleration via HLS
+      - Monte Carlo simulation
+  - category: Embedded & Prototyping Platforms
+    tools:
+      - NVIDIA Jetson + embedded Linux
+      - TI mmWave platform
       - ESP32
-      - NVIDIA Jetson Nano
       - Arduino MEGA
-  - category: Operating Systems & Tools
-    tools:
-      - Linux
-      - Docker
-      - Git
-
-# Interests & Specializations Section
-interests:
-  - area: Radar Sensing & Perception
-    description: Hardware-constrained mmWave FMCW radar for human sensing and spatial inference
-    icon: fa-satellite-dish
-  - area: Embedded Systems
-    description: Embedded system design for real-time sensor fusion and probabilistic state estimation
-    icon: fa-gear
-  - area: Cross-Modal Machine Learning
-    description: Learning rich representations from sparse sensors supervised by high-resolution modalities
-    icon: fa-brain
+      - ROS2 system architecture
 
 
 # Contact Form Setup. Setup an account and copy over the key. When someone fills out the form, it will be received in your email.

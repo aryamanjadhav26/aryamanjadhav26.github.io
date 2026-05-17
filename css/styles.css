@@ -25,12 +25,10 @@ html {
 #current-work,
 #projects,
 #skills,
-#interests,
 #contact,
 .current-work-section,
 .project-grid-section,
 .skills-section,
-.interests-section,
 .contact-section {
     scroll-margin-top: 32px;
 }
@@ -902,22 +900,82 @@ nav .mobile-nav {
 
 .project-grid-section .grid-container {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
-    margin-top: 0;
+    grid-template-columns: minmax(0, 920px);
+    justify-content: center;
+    gap: 30px;
+    margin: 0 auto;
+    max-width: 1040px;
+    padding-left: 56px;
+    position: relative;
+}
+
+.project-grid-section .grid-container::before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    bottom: 20px;
+    left: 24px;
+    width: 2px;
+    background: linear-gradient(180deg, rgba(74, 118, 238, 0.42), rgba(20, 31, 48, 0.08));
+    border-radius: 999px;
 }
 
 .project-grid-section .project-link {
     text-decoration: none;
     color: inherit;
     display: flex;
+    position: relative;
+}
+
+.project-year {
+    position: absolute;
+    top: 25px;
+    left: -104px;
+    width: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    color: rgba(26, 28, 32, 0.46);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-align: right;
+    transition: color 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.project-year::after {
+    content: "";
+    flex: 0 0 auto;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid rgba(74, 118, 238, 0.54);
+    box-shadow: 0 0 0 5px #ffffff;
+    transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.project-grid-section .project-link:hover .project-year {
+    color: rgba(74, 118, 238, 0.92);
+    transform: translateX(-2px);
+}
+
+.project-grid-section .project-link:hover .project-year::after {
+    background: #4a76ee;
+    border-color: #4a76ee;
+    box-shadow: 0 0 0 5px #ffffff, 0 0 0 8px rgba(74, 118, 238, 0.12);
+    transform: scale(1.08);
 }
 
 .project-card {
     background: #ffffff;
     border: 1px solid rgba(20, 31, 48, 0.08);
     border-radius: 8px;
-    overflow: hidden;
+    overflow: visible;
     transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
     position: relative;
     min-height: 100%;
@@ -939,6 +997,7 @@ nav .mobile-nav {
     display: flex;
     align-items: center;
     justify-content: center;
+    border-top: 1px solid rgba(20, 31, 48, 0.08);
     border-bottom: 1px solid rgba(20, 31, 48, 0.08);
 }
 
@@ -954,17 +1013,18 @@ nav .mobile-nav {
     transform: scale(1.025);
 }
 
+.project-heading {
+    padding: 22px 22px 18px;
+    display: grid;
+    gap: 6px;
+}
+
 .project-content {
     padding: 22px;
     display: flex;
     flex: 1;
     flex-direction: column;
     gap: 16px;
-}
-
-.project-heading {
-    display: grid;
-    gap: 6px;
 }
 
 .project-category {
@@ -1748,6 +1808,19 @@ footer p {
 
     .project-grid-section .grid-container {
         grid-template-columns: 1fr;
+        gap: 24px;
+        padding-left: 36px;
+    }
+
+    .project-grid-section .grid-container::before {
+        left: 14px;
+    }
+
+    .project-year {
+        left: -82px;
+        top: 21px;
+        width: 66px;
+        font-size: 11px;
     }
 
     .project-grid-section {
@@ -1873,92 +1946,5 @@ footer p {
     .project-hero-copy {
         padding: 18px;
     }
-}
-
-/* SECTION 5: INTERESTS & SPECIALIZATIONS - Apple minimal design */
-.interests-section {
-    padding: 80px 50px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.interests-section h2 {
-    font-size: clamp(36px, 6vw, 54px);
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 16px;
-    letter-spacing: 0;
-}
-
-.interests-section .section-subtitle {
-    font-size: 20px;
-    color: var(--text-color);
-    opacity: 0.7;
-    font-weight: 400;
-    margin: 0 0 60px 0;
-    text-align: center;
-}
-
-.interests-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 32px;
-    margin-top: 60px;
-}
-
-.interest-card {
-    background: rgba(var(--text-color-rgb, 0, 0, 0), 0.02);
-    border: 1px solid rgba(var(--text-color-rgb, 0, 0, 0), 0.06);
-    border-radius: 20px;
-    padding: 40px 32px;
-    text-align: center;
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.interest-card:hover {
-    background: rgba(var(--text-color-rgb, 0, 0, 0), 0.04);
-    border-color: rgba(0, 122, 255, 0.15);
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-}
-
-.interest-icon {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, 
-        #1e3a8a 0%,
-        #2563eb 25%,
-        #0ea5e9 50%,
-        #06b6d4 75%,
-        #10b981 100%);
-    border-radius: 20px;
-    position: relative;
-}
-
-.interest-icon i {
-    font-size: 36px;
-    color: white;
-    z-index: 2;
-}
-
-.interest-title {
-    font-size: 24px;
-    font-weight: 600;
-    margin: 0 0 16px 0;
-    color: var(--text-color);
-    line-height: 1.3;
-}
-
-.interest-description {
-    font-size: 16px;
-    line-height: 1.6;
-    color: var(--text-color);
-    opacity: 0.7;
-    margin: 0;
 }
 

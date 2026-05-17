@@ -3,6 +3,8 @@ layout: post
 title: 8-bit Processor Design Project
 permalink: /projects/cse-141l-project/
 category: Computer Architecture
+card_order: 40
+year: 2025
 github: https://github.com/Aryamanj26/CSE-141L-Project.git
 description: Designed a custom SystemVerilog CPU with a 9-bit ISA and 8-bit datapath, then used the ISA to implement integer-to-float and float-to-integer conversion routines.
 card_summary: Custom CPU architecture built around the challenge of int-to-float and float-to-int conversion on an 8-bit datapath.

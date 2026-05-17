@@ -26,7 +26,6 @@
   <rect class="bg" width="1200" height="750"/>
   <rect x="36" y="34" width="1128" height="682" rx="8" class="panel"/>
 
-  <text x="82" y="98" class="title">Transparent Rectenna Array</text>
   <text x="84" y="132" class="sub">Fused-quartz RF energy harvesting at 2.45 GHz for space-compatible surfaces</text>
 
   <g transform="translate(82 184)">

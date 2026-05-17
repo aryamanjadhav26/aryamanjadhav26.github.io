@@ -24,7 +24,6 @@
   <rect class="bg" width="1200" height="750"/>
   <rect x="36" y="34" width="1128" height="682" rx="8" class="panel"/>
 
-  <text x="82" y="98" class="title">8-bit Processor Design</text>
   <text x="84" y="132" class="sub">Custom ISA, pipelined datapath, SystemVerilog RTL, and waveform-driven verification</text>
 
   <g transform="translate(76 198)" filter="url(#shadow)">

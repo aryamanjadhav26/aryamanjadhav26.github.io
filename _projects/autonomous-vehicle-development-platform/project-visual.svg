@@ -28,7 +28,6 @@
   <rect class="bg" width="1200" height="750"/>
   <rect x="36" y="34" width="1128" height="682" rx="8" class="panel"/>
 
-  <text x="82" y="96" class="title">Autonomous Vehicle Stack</text>
   <text x="84" y="130" class="sub">ROS2, Jetson Nano, sensor fusion, perception, and real-time control</text>
 
   <g transform="translate(78 152)">

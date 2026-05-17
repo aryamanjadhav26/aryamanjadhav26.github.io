@@ -3,6 +3,8 @@ layout: post
 title: Transparent Rectenna Array for Space Applications
 permalink: /projects/transparent-rectenna-array/
 category: RF Energy Harvesting
+card_order: 20
+year: 2026
 description: Designed and simulated a transparent fused-quartz rectenna and six-element array at 2.45 GHz for space-compatible RF energy harvesting.
 card_summary: HFSS-ADS co-simulated transparent rectenna array that converts ambient 2.45 GHz RF into usable DC power.
 visual_alt: Diagram of a transparent fused-quartz rectenna array harvesting 2.45 GHz RF energy and converting it through a rectifier into DC output.

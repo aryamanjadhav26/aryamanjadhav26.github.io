@@ -10,11 +10,7 @@
                     </h1>
                 </div>
                 
-                <h2 class="headline-text">
-                    {{ site.headline }}
-                </h2>
-                
-                <p class="description-text">{{ site.description }}</p>
+                <p class="description-text">{{ site.hero_intro | default: site.description }}</p>
                 
                 {% if site.external-links %}
                 <div class="social-links">
@@ -91,9 +87,6 @@
                 </a>
                 <a href="#skills" class="nav-btn primary-btn">
                     <span>View Skills</span>
-                </a>
-                <a href="#interests" class="nav-btn primary-btn">
-                    <span>Interests</span>
                 </a>
                 <a href="#contact" class="nav-btn contact-btn">
                     <span>Get in touch</span>

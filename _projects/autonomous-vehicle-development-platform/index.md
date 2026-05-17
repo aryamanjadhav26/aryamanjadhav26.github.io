@@ -3,6 +3,8 @@ layout: post
 title: Autonomous Vehicle Development Platform
 permalink: /projects/autonomous-vehicle-development-platform/
 category: Embedded Autonomy
+card_order: 30
+year: 2025
 description: Built an RC-scale autonomy stack with ROS2, Jetson Nano, RTK-GPS/IMU fusion, lane perception, and PID control.
 card_summary: RC-scale self-driving platform combining perception, localization, and control on embedded hardware.
 visual_alt: Diagram of an RC autonomous vehicle stack from sensors to EKF localization, perception, PID control, and actuation.

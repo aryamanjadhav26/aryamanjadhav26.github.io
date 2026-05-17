@@ -3,6 +3,8 @@ layout: post
 title: Plant Disease Detection
 permalink: /projects/plant-disease-detection/
 category: Applied Computer Vision
+card_order: 50
+year: 2025
 github: https://github.com/Aryamanj26/PlantDiseaseDetection.git
 report: https://github.com/Aryamanj26/PlantDiseaseDetection/blob/main/Project-Report.pdf
 description: Built a plant disease classifier using preprocessing, leaf masking, feature extraction, and a 5-layer CNN across 87,000 images.

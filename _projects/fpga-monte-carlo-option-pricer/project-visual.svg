@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+  <title id="title">Monte Carlo Asian option pricer on FPGA</title>
+  <desc id="desc">Five-kernel Vitis HLS dataflow pipeline with xorshift PRNG, Box-Muller cosine LUT, GBM path simulation, payoff reduction, and outputs for price, delta, gamma, and vega.</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#12233f" flood-opacity="0.13"/>
+    </filter>
+    <marker id="stream-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1.5 1.5 L8 4.5 L1.5 7.5 Z" fill="#4a76ee"/>
+    </marker>
+    <style>
+      .bg{fill:#f8fafc}
+      .panel{fill:#fff;stroke:#d9e3ee;stroke-width:2}
+      .title{font:700 48px Poppins,Arial,sans-serif;fill:#10203a}
+      .sub{font:500 20px Poppins,Arial,sans-serif;fill:#607086}
+      .label{font:700 18px Poppins,Arial,sans-serif;fill:#142033}
+      .small{font:500 14px Poppins,Arial,sans-serif;fill:#607086}
+      .tiny{font:700 12px Poppins,Arial,sans-serif;fill:#607086}
+      .metric{font:700 32px Poppins,Arial,sans-serif;fill:#10203a}
+      .metric-label{font:700 12px Poppins,Arial,sans-serif;fill:#4a76ee;text-transform:uppercase}
+      .box{fill:#fff;stroke:#cfd9e6;stroke-width:2}
+      .blue{fill:#eaf2ff;stroke:#4a76ee}
+      .green{fill:#eaf8f1;stroke:#25a36f}
+      .amber{fill:#fff5df;stroke:#f2a516}
+      .violet{fill:#f2edff;stroke:#7950f2}
+      .slate{fill:#f8fafc;stroke:#d2dbe8}
+      .stream{fill:none;stroke:#4a76ee;stroke-width:3;marker-end:url(#stream-arrow);stroke-dasharray:9 8;stroke-linecap:round}
+      .chip{fill:#10203a}
+      .pin{stroke:#607086;stroke-width:4;stroke-linecap:round}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="750"/>
+  <rect x="36" y="34" width="1128" height="682" rx="8" class="panel"/>
+
+  <text x="84" y="130" class="sub">Vitis HLS dataflow for Asian options, Greeks, and vol-bumped path sharing</text>
+
+  <g transform="translate(82 172)">
+    <rect x="0" y="0" width="1036" height="334" rx="8" fill="#f8fafc" stroke="#d2dbe8"/>
+    <text x="28" y="42" class="label">hls::stream dataflow pipeline</text>
+    <text x="28" y="68" class="small">64 paths × 64 timesteps, eight lanes bundled per cycle</text>
+
+    <g transform="translate(30 118)" filter="url(#shadow)">
+      <rect x="0" y="0" width="150" height="116" rx="8" class="box slate"/>
+      <text x="24" y="42" class="label">Seed Load</text>
+      <text x="24" y="70" class="small">per-path seeds</text>
+      <text x="24" y="92" class="tiny">ap_uint state</text>
+    </g>
+    <path d="M190 176 L246 176" class="stream"/>
+
+    <g transform="translate(256 118)" filter="url(#shadow)">
+      <rect x="0" y="0" width="150" height="116" rx="8" class="box blue"/>
+      <text x="24" y="42" class="label">Xorshift</text>
+      <text x="24" y="70" class="small">uniform pairs</text>
+      <text x="24" y="92" class="tiny">8 lanes / cycle</text>
+    </g>
+    <path d="M416 176 L472 176" class="stream"/>
+
+    <g transform="translate(482 118)" filter="url(#shadow)">
+      <rect x="0" y="0" width="170" height="116" rx="8" class="box green"/>
+      <text x="22" y="40" class="label">Box-Muller</text>
+      <text x="22" y="68" class="small">normals via LUT</text>
+      <text x="22" y="92" class="tiny">2048 cosine ROMs</text>
+    </g>
+    <path d="M662 176 L718 176" class="stream"/>
+
+    <g transform="translate(728 78)" filter="url(#shadow)">
+      <rect x="0" y="0" width="250" height="166" rx="8" class="box amber"/>
+      <text x="24" y="38" class="label">GBM Simulation</text>
+      <text x="24" y="62" class="small">Taylor-shared expf</text>
+      <g transform="translate(28 76)">
+        <rect x="0" y="0" width="194" height="24" rx="4" fill="#fff" stroke="#f2a516"/>
+        <text x="14" y="17" class="tiny">base path</text>
+        <rect x="0" y="32" width="194" height="24" rx="4" fill="#fff" stroke="#f2a516"/>
+        <text x="14" y="49" class="tiny">vol-up path</text>
+        <rect x="0" y="64" width="194" height="24" rx="4" fill="#fff" stroke="#f2a516"/>
+        <text x="14" y="81" class="tiny">vol-down path</text>
+      </g>
+    </g>
+
+    <path d="M853 248 L853 258" class="stream"/>
+
+    <g transform="translate(728 262)" filter="url(#shadow)">
+      <rect x="0" y="0" width="250" height="58" rx="8" class="box violet"/>
+      <text x="24" y="24" class="label">Payoff Reduction</text>
+      <text x="24" y="46" class="small">price, delta, gamma, vega</text>
+    </g>
+  </g>
+
+  <g transform="translate(84 548)">
+    <rect x="0" y="0" width="190" height="86" rx="8" fill="#eaf2ff" stroke="#4a76ee"/>
+    <text x="22" y="38" class="metric">3,228x</text>
+    <text x="22" y="62" class="metric-label">latency speedup</text>
+  </g>
+  <g transform="translate(308 548)">
+    <rect x="0" y="0" width="190" height="86" rx="8" fill="#eaf8f1" stroke="#25a36f"/>
+    <text x="22" y="38" class="metric">4.4 µs</text>
+    <text x="22" y="62" class="metric-label">optimized latency</text>
+  </g>
+  <g transform="translate(532 548)">
+    <rect x="0" y="0" width="190" height="86" rx="8" fill="#fff5df" stroke="#f2a516"/>
+    <text x="22" y="38" class="metric">II=1</text>
+    <text x="22" y="62" class="metric-label">critical loops</text>
+  </g>
+
+  <g transform="translate(784 558)">
+    <rect x="0" y="0" width="80" height="64" rx="8" class="chip"/>
+    <path d="M-18 12 H0 M-18 28 H0 M-18 44 H0 M80 12 H98 M80 28 H98 M80 44 H98" class="pin"/>
+    <path d="M14 -16 V0 M32 -16 V0 M50 -16 V0 M68 -16 V0 M14 64 V80 M32 64 V80 M50 64 V80 M68 64 V80" class="pin"/>
+    <text x="18" y="40" font-family="Poppins,Arial,sans-serif" font-size="20" font-weight="700" fill="#fff">FPGA</text>
+  </g>
+  <g transform="translate(914 564)">
+    <rect x="0" y="0" width="204" height="52" rx="8" fill="#f8fafc" stroke="#d2dbe8"/>
+    <text x="20" y="32" class="label">single kernel</text>
+  </g>
+</svg>
