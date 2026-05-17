@@ -56,7 +56,8 @@
   <g transform="translate(84 406)">
     <rect x="0" y="0" width="304" height="170" rx="8" fill="#f8fafc" stroke="#d2dbe8"/>
     <text x="24" y="42" class="metric">Layered core</text>
-    <text x="24" y="78" class="small">AppController routes work without parsing or storage details</text>
+    <text x="24" y="72" class="small">AppController routes work</text>
+    <text x="24" y="92" class="small">without parsing or storage</text>
     <path d="M24 112 H254" stroke="#d8e2ee" stroke-width="2"/>
     <text x="24" y="142" class="tiny">controller</text>
     <text x="120" y="142" class="tiny">parser</text>

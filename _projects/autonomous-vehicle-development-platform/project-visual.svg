@@ -31,7 +31,7 @@
   <text x="82" y="96" class="title">Autonomous Vehicle Stack</text>
   <text x="84" y="130" class="sub">ROS2, Jetson Nano, sensor fusion, perception, and real-time control</text>
 
-  <g transform="translate(78 188)">
+  <g transform="translate(78 152)">
     <path d="M82 430 C44 330 74 202 170 150 C260 101 390 114 470 194 C548 272 560 386 490 456" fill="none" stroke="#cbd5e1" stroke-width="112" stroke-linecap="round"/>
     <path d="M82 430 C44 330 74 202 170 150 C260 101 390 114 470 194 C548 272 560 386 490 456" fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="round" stroke-dasharray="26 28"/>
     <path d="M28 456 L535 456" stroke="#e1e8f0" stroke-width="3"/>

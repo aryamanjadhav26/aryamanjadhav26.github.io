@@ -18,11 +18,10 @@
 
         <p class="work-description">
             Building a human sensing system on a hardware-constrained single-chip mmWave FMCW radar.
-            Raw ADC samples are collected directly from the chip, then processed to filter clutter and
-            isolate the faint signals reflected off the human body. A machine learning model learns
-            the mapping between these sparse radar observations and a high-resolution supervision sensor —
-            enabling the low-cost radar to infer rich spatial information it could not produce alone.
-            Conceptually similar to SitPose.
+            Raw ADC samples are processed through signal filtering and clutter suppression to isolate
+            human reflections. A machine learning model learns to map these sparse radar observations
+            to spatial information, supervised by a high-resolution reference sensor — enabling the
+            low-cost radar to infer rich spatial information beyond its native capabilities.
         </p>
 
         <div class="work-pipeline">
