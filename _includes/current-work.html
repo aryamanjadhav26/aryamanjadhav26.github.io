@@ -1,0 +1,72 @@
+<section id="current-work" class="current-work-section">
+    <div class="section-header">
+        <h2>Current Work</h2>
+        <p class="section-subtitle">Active research in progress</p>
+    </div>
+
+    <div class="current-work-card">
+        <div class="current-work-card-header">
+            <div class="work-meta">
+                <span class="work-category">Research</span>
+                <span class="active-badge">
+                    <span class="pulse-dot"></span>
+                    Active
+                </span>
+            </div>
+            <h3 class="work-title">mmWave FMCW Radar Human Sensing</h3>
+        </div>
+
+        <p class="work-description">
+            Building a human sensing system on a hardware-constrained single-chip mmWave FMCW radar.
+            Raw ADC samples are collected directly from the chip, then processed to filter clutter and
+            isolate the faint signals reflected off the human body. A machine learning model learns
+            the mapping between these sparse radar observations and a high-resolution supervision sensor —
+            enabling the low-cost radar to infer rich spatial information it could not produce alone.
+            Conceptually similar to SitPose.
+        </p>
+
+        <div class="work-pipeline">
+            <div class="pipeline-stage">
+                <div class="pipeline-icon">
+                    <i class="fa-solid fa-satellite-dish"></i>
+                </div>
+                <span class="pipeline-label">Raw ADC Capture</span>
+                <p class="pipeline-desc">Single-chip mmWave radar, hardware-constrained acquisition</p>
+            </div>
+            <div class="pipeline-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            <div class="pipeline-stage">
+                <div class="pipeline-icon">
+                    <i class="fa-solid fa-wave-square"></i>
+                </div>
+                <span class="pipeline-label">Signal Processing</span>
+                <p class="pipeline-desc">Range-Doppler, CFAR detection, clutter filtering</p>
+            </div>
+            <div class="pipeline-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            <div class="pipeline-stage">
+                <div class="pipeline-icon">
+                    <i class="fa-solid fa-person-walking"></i>
+                </div>
+                <span class="pipeline-label">Human Isolation</span>
+                <p class="pipeline-desc">Separating body reflections from environmental noise</p>
+            </div>
+            <div class="pipeline-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            <div class="pipeline-stage pipeline-stage--highlight">
+                <div class="pipeline-icon">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+                <span class="pipeline-label">Cross-Modal ML</span>
+                <p class="pipeline-desc">Supervised by high-resolution sensor</p>
+            </div>
+        </div>
+
+        <div class="work-tags">
+            <span class="skill-tag">FMCW Radar</span>
+            <span class="skill-tag">ADC Sampling</span>
+            <span class="skill-tag">Range-Doppler</span>
+            <span class="skill-tag">CFAR Detection</span>
+            <span class="skill-tag">Clutter Filtering</span>
+            <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">Cross-Modal Learning</span>
+        </div>
+    </div>
+</section>

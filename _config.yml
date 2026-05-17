@@ -53,6 +53,13 @@ skills:
       - C++
       - Python
       - Java
+  - category: Radar & Signal Processing
+    tools:
+      - FMCW Radar
+      - Range-Doppler Processing
+      - CFAR Detection
+      - Clutter Filtering
+      - ADC Data Capture
   - category: Parallel & Scientific Computing
     tools:
       - CUDA
@@ -64,8 +71,9 @@ skills:
     tools:
       - PyTorch
       - OpenCV
+      - NumPy
+      - SciPy
       - ROS2
-      - ns-3
   - category: Hardware Design & RTL
     tools:
       - SystemVerilog
@@ -75,6 +83,7 @@ skills:
       - LTspice
   - category: Prototyping Platforms
     tools:
+      - TI mmWave Radar
       - ESP32
       - NVIDIA Jetson Nano
       - Arduino MEGA
@@ -86,15 +95,15 @@ skills:
 
 # Interests & Specializations Section
 interests:
-  - area: Performance Modeling
-    description: C/C++ performance modeling for CPU/GPU microarchitectures
-    icon: fa-microchip
+  - area: Radar Sensing & Perception
+    description: Hardware-constrained mmWave FMCW radar for human sensing and spatial inference
+    icon: fa-satellite-dish
   - area: Embedded Systems
     description: Embedded system design for real-time sensor fusion and probabilistic state estimation
     icon: fa-gear
-  - area: Network Simulation
-    description: Protocol-level performance modeling in ns-3
-    icon: fa-network-wired
+  - area: Cross-Modal Machine Learning
+    description: Learning rich representations from sparse sensors supervised by high-resolution modalities
+    icon: fa-brain
 
 
 # Contact Form Setup. Setup an account and copy over the key. When someone fills out the form, it will be received in your email.
