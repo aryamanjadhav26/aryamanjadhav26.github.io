@@ -14,9 +14,9 @@ title: Aryaman's Portfolio # This is what shows up in the tab of the browser
 
 # Hero section
 name: Aryaman Jadhav
-headline: An Electrical Engineer 
+headline: Electrical Engineer | mmWave Radar & Embedded Systems
 description: >-
-  Curious electrical engineer driven by the art of design, turning ideas into efficient systems, blending hardware and software, and mastering the tradeoffs that lead to thoughtful solutions with real impact.
+  Aryaman Jadhav is an electrical engineer specializing in mmWave radar sensing, FPGA design, and embedded systems. Expert in CUDA parallel computing, hardware-constrained signal processing, and real-time sensor fusion with a track record of shipping production systems.
   
 
 
@@ -192,7 +192,7 @@ baseurl: ""  # Leave empty for user pages
 locale: "en_US"
 
 # Additional SEO settings
-google_analytics: # Add your Google Analytics ID here when you set it up
+google_analytics: G-D9QQDL8RWH
 google_site_verification: # Add your Google Search Console verification code here
 
 # Jekyll SEO Tag settings
