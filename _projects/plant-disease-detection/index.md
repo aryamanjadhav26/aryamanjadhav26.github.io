@@ -5,8 +5,8 @@ permalink: /projects/plant-disease-detection/
 category: Applied Computer Vision
 card_order: 50
 year: 2025
-github: https://github.com/Aryamanj26/PlantDiseaseDetection.git
-report: https://github.com/Aryamanj26/PlantDiseaseDetection/blob/main/Project-Report.pdf
+github: https://github.com/aryamanjadhav26/PlantDiseaseDetection.git
+report: https://github.com/aryamanjadhav26/PlantDiseaseDetection/blob/main/Project-Report.pdf
 description: Built a plant disease classifier using preprocessing, leaf masking, feature extraction, and a 5-layer CNN across 87,000 images.
 card_summary: Computer vision pipeline that isolates leaves, extracts features, and classifies disease across 38 classes.
 visual_alt: Diagram of a plant disease detection pipeline from leaf image to mask, features, CNN layers, and classification confidence.

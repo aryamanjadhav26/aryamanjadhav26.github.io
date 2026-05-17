@@ -36,7 +36,7 @@ resume-url: https://drive.google.com/file/d/1MQIOWfDIO7hSiUIkRpIMeyC2JptuKO8Q/vi
 # Set up external links. These show as small icons next to your name.
 external-links:    # input only your own url slug. The icons with missing entries will not appear.
   linkedin: aryamanjadhav    # https://www.linkedin.com/in/{your url slug} 
-  github: Aryamanj26    # https://github.com/{your url slug} 
+  github: aryamanjadhav26    # https://github.com/{your url slug} 
   stackoverflow:        # https://stackoverflow.com/users/{your url slug}
   medium:            # https://medium.com/@{your url slug} 
   x-twitter:   # https://x.com/{your url slug} 
@@ -182,7 +182,7 @@ include:
   - _projects
 
 # SEO and Site Configuration
-url: "https://aryamanj26.github.io"  # Update this to your actual GitHub Pages URL
+url: "https://aryamanjadhav26.github.io"  # Update this to your actual GitHub Pages URL
 baseurl: ""  # Leave empty for user pages
 locale: "en_US"
 
@@ -195,7 +195,7 @@ social:
   name: Aryaman Jadhav
   links:
     - https://www.linkedin.com/in/aryamanjadhav
-    - https://github.com/Aryamanj26
+    - https://github.com/aryamanjadhav26
 
 # Exclude from processing.
 # The following items will not be processed, by default.
