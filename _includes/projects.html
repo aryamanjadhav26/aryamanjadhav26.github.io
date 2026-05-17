@@ -19,7 +19,12 @@
                         {% if item.category %}
                             <span class="project-category">{{ item.category }}</span>
                         {% endif %}
-                        <h3 class="project-title">{{ item.title }}</h3>
+                        <div class="project-title-row">
+                            <h3 class="project-title">{{ item.title }}</h3>
+                            {% if item.year %}
+                                <span class="project-year-pill">{{ item.year }}</span>
+                            {% endif %}
+                        </div>
                     </div>
 
                     <div class="project-image-container">

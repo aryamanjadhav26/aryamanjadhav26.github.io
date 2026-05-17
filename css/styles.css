@@ -1043,6 +1043,27 @@ nav .mobile-nav {
     line-height: 1.25;
 }
 
+.project-title-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.project-year-pill {
+    display: none;
+    flex: 0 0 auto;
+    padding: 5px 8px;
+    border-radius: 6px;
+    background: rgba(74, 118, 238, 0.08);
+    border: 1px solid rgba(74, 118, 238, 0.14);
+    color: #3459bf;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1;
+}
+
 .project-description {
     font-size: 15px;
     line-height: 1.45;
@@ -1733,6 +1754,17 @@ footer p {
 
 @media (max-width: 768px) {
     /* NEVBAR*/
+    nav {
+        min-height: 80px;
+        height: auto;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 18px 0;
+        position: relative;
+        z-index: 20;
+        background: var(--background-color);
+    }
+
     .desktop-nav {
         display: none;
     }
@@ -1746,15 +1778,14 @@ footer p {
 
     .mobile-nav {
         display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: var(--light-background-color);
+        flex: 0 0 100%;
+        margin-top: 14px;
+        background: #ffffff;
         flex-direction: column;
-        border-top: 1px solid var(--border-color);
-        border-radius: 0 0 10px 10px;
-        z-index: 1000;
+        border: 1px solid rgba(20, 31, 48, 0.08);
+        border-radius: 8px;
+        box-shadow: 0 14px 36px rgba(20, 31, 48, 0.08);
+        overflow: hidden;
     }
 
     .mobile-nav.active {
@@ -1764,12 +1795,16 @@ footer p {
     .mobile-nav a {
         color: var(--text-color);
         font-size: 20px;
-        padding: 5px;
+        padding: 12px 16px;
         text-align: center;
         display: flex;
         align-items: center;
         justify-content: center;
         min-height: 50px; 
+    }
+
+    .mobile-nav a + a {
+        border-top: 1px solid rgba(20, 31, 48, 0.08);
     }
 
     .menu-toggle.active .hamburger {
@@ -1809,18 +1844,23 @@ footer p {
     .project-grid-section .grid-container {
         grid-template-columns: 1fr;
         gap: 24px;
-        padding-left: 36px;
-    }
-
-    .project-grid-section .grid-container::before {
-        left: 14px;
+        padding-left: 0;
     }
 
     .project-year {
-        left: -82px;
-        top: 21px;
-        width: 66px;
-        font-size: 11px;
+        display: none;
+    }
+
+    .project-grid-section .grid-container::before {
+        display: none;
+    }
+
+    .project-title-row {
+        align-items: center;
+    }
+
+    .project-year-pill {
+        display: inline-flex;
     }
 
     .project-grid-section {
