@@ -1,26 +1,41 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.querySelector('.menu-toggle');
     const mobileNav = document.querySelector('.mobile-nav');
 
-    menuToggle.addEventListener('click', function() {
-        menuToggle.classList.toggle('active');
-        mobileNav.classList.toggle('active');
-    });
+    if (menuToggle && mobileNav) {
+        const setMenuOpen = (isOpen) => {
+            menuToggle.classList.toggle('active', isOpen);
+            mobileNav.classList.toggle('active', isOpen);
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+        };
 
-    // Close menu when clicking outside
-    document.addEventListener('click', function(event) {
-        if (!event.target.closest('nav')) {
-            menuToggle.classList.remove('active');
-            mobileNav.classList.remove('active');
-        }
-    });
+        menuToggle.addEventListener('click', () => {
+            setMenuOpen(!mobileNav.classList.contains('active'));
+        });
 
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('.nav-btn, .arrow a').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('nav')) {
+                setMenuOpen(false);
+            }
+        });
+
+        mobileNav.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => setMenuOpen(false));
+        });
+    }
+
+    document.querySelectorAll('.nav-btn, .arrow a').forEach((anchor) => {
+        anchor.addEventListener('click', (event) => {
+            const selector = anchor.getAttribute('href');
+
+            if (!selector || !selector.startsWith('#')) {
+                return;
+            }
+
+            const target = document.querySelector(selector);
+
             if (target) {
+                event.preventDefault();
                 target.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
@@ -29,15 +44,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Subtle scroll animations for sections
-    function initScrollAnimations() {
-        const animatedElements = document.querySelectorAll('.project-grid-section, .skills-section, .contact-section');
-        
+    const animatedElements = document.querySelectorAll(
+        '.skills-section, .interests-section, .contact-section'
+    );
+
+    if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
                 }
             });
         }, {
@@ -45,25 +61,9 @@ document.addEventListener('DOMContentLoaded', function() {
             rootMargin: '0px 0px -30px 0px'
         });
 
-        animatedElements.forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
+        animatedElements.forEach((element) => {
+            element.classList.add('js-reveal');
+            observer.observe(element);
         });
     }
-
-    // Initialize animations
-    initScrollAnimations();
-
-    // Apple-style smooth interactions
-    document.querySelectorAll('.nav-btn, .contact-link, .social-link').forEach(element => {
-        element.addEventListener('mouseenter', function() {
-            this.style.transform = this.style.transform.replace('translateY(0px)', '') + ' translateY(-1px)';
-        });
-        
-        element.addEventListener('mouseleave', function() {
-            this.style.transform = this.style.transform.replace('translateY(-1px)', '') + ' translateY(0px)';
-        });
-    });
 });

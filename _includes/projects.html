@@ -1,31 +1,47 @@
-<!-- SECTION 3: Projects -->
 <section id="projects" class="project-grid-section">
     <div class="section-header">
-        <h2>My Projects</h2>
-        <p class="section-subtitle">Engineering solutions that make a difference</p>
+        <h2>Selected Projects</h2>
+        <p class="section-subtitle">Systems work, hardware-software design, and applied ML.</p>
     </div>
 
     <div class="grid-container">
         {% for item in site.projects %}
             {% unless item.hidden %}
-                <a href="{{ item.url }}" class="project-link">
-                    <div class="project-card">
-                        <div class="project-image-container">
-                            {% assign folder_path = item.path | split: "/" | slice: 0, 2 | join: "/" %}
-                            {% assign image_path = "/" | append: folder_path | append: item['main-image'] %}
-                            <img src="{{ image_path }}" alt="{{ item.title }} image" class="project-image">
-                            <div class="project-overlay">
-                                <span class="view-project">View Project →</span>
-                            </div>
-                        </div>
-                        <div class="project-content">
+                {% assign folder_path = item.path | split: "/" | slice: 0, 2 | join: "/" %}
+                {% assign image_path = "/" | append: folder_path | append: item['main-image'] %}
+                <a href="{{ item.url | relative_url }}" class="project-link project-card" aria-label="Open {{ item.title }}">
+                    <div class="project-image-container">
+                        <img src="{{ image_path | relative_url }}" alt="{{ item.visual_alt | default: item.title }}" class="project-image">
+                    </div>
+
+                    <div class="project-content">
+                        <div class="project-heading">
+                            {% if item.category %}
+                                <span class="project-category">{{ item.category }}</span>
+                            {% endif %}
                             <h3 class="project-title">{{ item.title }}</h3>
-                            <p class="project-description">{{ item.description }}</p>
+                        </div>
+
+                        <p class="project-description">{{ item.card_summary | default: item.description }}</p>
+
+                        {% if item.glance %}
+                            <dl class="project-glance">
+                                {% for point in item.glance limit: 3 %}
+                                    <div>
+                                        <dt>{{ point.label }}</dt>
+                                        <dd>{{ point.value }}</dd>
+                                    </div>
+                                {% endfor %}
+                            </dl>
+                        {% endif %}
+
+                        <div class="project-card-footer">
                             <div class="project-skills">
-                                {% for skill in item.skills %}
+                                {% for skill in item.skills limit: 4 %}
                                     <span class="skill-tag">{{ skill }}</span>
                                 {% endfor %}
                             </div>
+                            <span class="project-cta">Open <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
                         </div>
                     </div>
                 </a>

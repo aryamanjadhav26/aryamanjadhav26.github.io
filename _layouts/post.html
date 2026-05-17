@@ -3,33 +3,75 @@ layout: wrapper
 ---
 
 <div class="post-view">
-    <div class="summary">
-        
-       
+    <section class="project-hero">
         {% assign folder_path = page.path | split: "/" | slice: 0, 2 | join: "/" %}
         {% assign image_path = "/" | append: folder_path | append: page['main-image'] %}       
-        <img src="{{ image_path }}" alt="{{ page.title }} image">
-        
-        <div class="title-header">
-            <h1>{{page.title}}</h1>
+        <div class="project-hero-visual">
+            <img src="{{ image_path | relative_url }}" alt="{{ page.visual_alt | default: page.title }}">
         </div>
-        
-        <div class="project-description">
-            <h2>Project Overview</h2>
+
+        <div class="project-hero-copy">
+            {% if page.category %}
+                <span class="project-category">{{ page.category }}</span>
+            {% endif %}
+            <h1>{{ page.title }}</h1>
             <p>{{ page.description }}</p>
+
+            {% if page.glance %}
+                <dl class="project-hero-glance">
+                    {% for point in page.glance %}
+                        <div>
+                            <dt>{{ point.label }}</dt>
+                            <dd>{{ point.value }}</dd>
+                        </div>
+                    {% endfor %}
+                </dl>
+            {% endif %}
+
+            {% if page.github or page.report or page.paper or page.poster %}
+                <div class="project-actions">
+                    {% if page.github %}
+                        <a class="project-action" href="{{ page.github }}" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-brands fa-github" aria-hidden="true"></i>
+                            GitHub
+                        </a>
+                    {% endif %}
+                    {% if page.report %}
+                        <a class="project-action" href="{{ page.report }}" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
+                            Report
+                        </a>
+                    {% endif %}
+                    {% if page.paper %}
+                        <a class="project-action" href="{{ page.paper | relative_url }}" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
+                            Paper
+                        </a>
+                    {% endif %}
+                    {% if page.poster %}
+                        <a class="project-action" href="{{ page.poster | relative_url }}" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-solid fa-chalkboard" aria-hidden="true"></i>
+                            Poster
+                        </a>
+                    {% endif %}
+                </div>
+            {% endif %}
         </div>
-        <div class="skills-card">
-            <h2>Skills Used</h2> 
-            <div class="skills-list">
+    </section>
+
+    <div class="project-body">
+        <aside class="project-skill-rail" aria-label="Project tools">
+            <h2>Tools</h2>
+            <div class="project-tool-list">
                 {% for skill in page.skills %}
-                <span class="skill">{{ skill }}</span>    
+                    <span class="project-tool">{{ skill }}</span>
                 {% endfor %}
             </div>
-        </div>
-    </div>
-      
-    <div class="content">
-        {{content}}
+        </aside>
+
+        <article class="content">
+            {{ content }}
+        </article>
     </div>
 </div>
 

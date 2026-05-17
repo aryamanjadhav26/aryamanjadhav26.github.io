@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+  <title id="title">Autonomous vehicle development platform</title>
+  <desc id="desc">RC vehicle autonomy stack with sensors, EKF localization, perception, PID control, and actuation.</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#12233f" flood-opacity="0.14"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2 2 L10 6 L2 10 Z" fill="#2f5ed7"/>
+    </marker>
+    <style>
+      .bg{fill:#f6f9fc}
+      .panel{fill:#fff;stroke:#d9e3ee;stroke-width:2}
+      .title{font:700 48px Poppins,Arial,sans-serif;fill:#142033}
+      .sub{font:500 20px Poppins,Arial,sans-serif;fill:#607086}
+      .label{font:700 18px Poppins,Arial,sans-serif;fill:#142033}
+      .small{font:500 15px Poppins,Arial,sans-serif;fill:#607086}
+      .metric{font:700 34px Poppins,Arial,sans-serif;fill:#142033}
+      .metric-label{font:700 13px Poppins,Arial,sans-serif;fill:#4a76ee;text-transform:uppercase}
+      .box{fill:#fff;stroke:#cfd9e6;stroke-width:2}
+      .blue{fill:#eaf2ff;stroke:#4a76ee}
+      .green{fill:#eaf8f1;stroke:#25a36f}
+      .amber{fill:#fff5df;stroke:#f2a516}
+      .violet{fill:#f2edff;stroke:#7950f2}
+      .line{fill:none;stroke:#2f5ed7;stroke-width:5;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="750"/>
+  <rect x="36" y="34" width="1128" height="682" rx="8" class="panel"/>
+
+  <text x="82" y="96" class="title">Autonomous Vehicle Stack</text>
+  <text x="84" y="130" class="sub">ROS2, Jetson Nano, sensor fusion, perception, and real-time control</text>
+
+  <g transform="translate(78 188)">
+    <path d="M82 430 C44 330 74 202 170 150 C260 101 390 114 470 194 C548 272 560 386 490 456" fill="none" stroke="#cbd5e1" stroke-width="112" stroke-linecap="round"/>
+    <path d="M82 430 C44 330 74 202 170 150 C260 101 390 114 470 194 C548 272 560 386 490 456" fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="round" stroke-dasharray="26 28"/>
+    <path d="M28 456 L535 456" stroke="#e1e8f0" stroke-width="3"/>
+    <g transform="translate(242 254) rotate(-16)" filter="url(#shadow)">
+      <rect x="-70" y="-95" width="140" height="190" rx="14" fill="#1f2d3d"/>
+      <rect x="-48" y="-72" width="96" height="126" rx="10" fill="#ff7a21"/>
+      <rect x="-32" y="-54" width="64" height="46" rx="6" fill="#dcecff"/>
+      <rect x="-36" y="8" width="72" height="50" rx="6" fill="#28384f"/>
+      <circle cx="0" cy="-94" r="24" fill="#132033"/>
+      <circle cx="0" cy="-94" r="12" fill="#4a76ee"/>
+      <rect x="-98" y="-76" width="28" height="62" rx="10" fill="#111827"/>
+      <rect x="70" y="-76" width="28" height="62" rx="10" fill="#111827"/>
+      <rect x="-98" y="26" width="28" height="62" rx="10" fill="#111827"/>
+      <rect x="70" y="26" width="28" height="62" rx="10" fill="#111827"/>
+    </g>
+    <g transform="translate(42 486)">
+      <rect x="0" y="0" width="144" height="76" rx="8" fill="#eaf2ff" stroke="#4a76ee"/>
+      <text x="18" y="34" class="metric">3 cm</text>
+      <text x="18" y="56" class="metric-label">RTK accuracy</text>
+    </g>
+    <g transform="translate(212 486)">
+      <rect x="0" y="0" width="144" height="76" rx="8" fill="#eaf8f1" stroke="#25a36f"/>
+      <text x="18" y="34" class="metric">12 mph</text>
+      <text x="18" y="56" class="metric-label">path tracking</text>
+    </g>
+    <g transform="translate(382 486)">
+      <rect x="0" y="0" width="144" height="76" rx="8" fill="#fff5df" stroke="#f2a516"/>
+      <text x="18" y="34" class="metric">40 Hz</text>
+      <text x="18" y="56" class="metric-label">state updates</text>
+    </g>
+  </g>
+
+  <g transform="translate(648 188)">
+    <rect x="0" y="0" width="420" height="86" rx="8" class="box blue"/>
+    <text x="24" y="35" class="label">Sensors</text>
+    <text x="24" y="62" class="small">OAK-D camera, RTK-GPS, IMU</text>
+    <path d="M210 86 L210 128" class="line"/>
+
+    <rect x="0" y="142" width="420" height="86" rx="8" class="box green"/>
+    <text x="24" y="177" class="label">Localization</text>
+    <text x="24" y="204" class="small">EKF fusion and 10 Hz to 40 Hz upsampling</text>
+    <path d="M210 228 L210 270" class="line"/>
+
+    <rect x="0" y="284" width="420" height="86" rx="8" class="box amber"/>
+    <text x="24" y="319" class="label">Perception</text>
+    <text x="24" y="346" class="small">OpenCV lane center plus edge inference</text>
+    <path d="M210 370 L210 412" class="line"/>
+
+    <rect x="0" y="426" width="420" height="86" rx="8" class="box violet"/>
+    <text x="24" y="461" class="label">Control</text>
+    <text x="24" y="488" class="small">PID steering and BLDC actuation</text>
+  </g>
+</svg>

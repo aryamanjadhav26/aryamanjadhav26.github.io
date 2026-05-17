@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+  <title id="title">8-bit pipelined CPU design</title>
+  <desc id="desc">SystemVerilog CPU diagram showing pipeline stages, register file, instruction format, and RTL verification waveform.</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#12233f" flood-opacity="0.13"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2 2 L10 6 L2 10 Z" fill="#334155"/>
+    </marker>
+    <style>
+      .bg{fill:#f8fafc}
+      .panel{fill:#fff;stroke:#d9e3ee;stroke-width:2}
+      .title{font:700 48px Poppins,Arial,sans-serif;fill:#10203a}
+      .sub{font:500 20px Poppins,Arial,sans-serif;fill:#607086}
+      .stage{font:700 26px Poppins,Arial,sans-serif}
+      .small{font:500 15px Poppins,Arial,sans-serif;fill:#607086}
+      .tiny{font:700 12px Poppins,Arial,sans-serif;fill:#607086}
+      .metric{font:700 32px Poppins,Arial,sans-serif;fill:#10203a}
+      .box{stroke-width:3;rx:8}
+      .wire{fill:none;stroke:#334155;stroke-width:5;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="750"/>
+  <rect x="36" y="34" width="1128" height="682" rx="8" class="panel"/>
+
+  <text x="82" y="98" class="title">8-bit Processor Design</text>
+  <text x="84" y="132" class="sub">Custom ISA, pipelined datapath, SystemVerilog RTL, and waveform-driven verification</text>
+
+  <g transform="translate(76 198)" filter="url(#shadow)">
+    <rect x="0" y="0" width="208" height="120" rx="8" fill="#eaf8f1" stroke="#1f9d68" class="box"/>
+    <text x="36" y="52" class="stage" fill="#087f5b">FETCH</text>
+    <text x="34" y="82" class="small">instruction memory</text>
+  </g>
+  <path d="M295 258 L362 258" class="wire"/>
+  <g transform="translate(378 198)" filter="url(#shadow)">
+    <rect x="0" y="0" width="208" height="120" rx="8" fill="#eaf2ff" stroke="#2f6fe4" class="box"/>
+    <text x="36" y="52" class="stage" fill="#1756c2">DECODE</text>
+    <text x="38" y="82" class="small">control + registers</text>
+  </g>
+  <path d="M598 258 L664 258" class="wire"/>
+  <g transform="translate(680 198)" filter="url(#shadow)">
+    <rect x="0" y="0" width="208" height="120" rx="8" fill="#fff5df" stroke="#f08c00" class="box"/>
+    <text x="34" y="52" class="stage" fill="#e67700">EXECUTE</text>
+    <text x="54" y="82" class="small">ALU operation</text>
+  </g>
+  <path d="M900 258 L966 258" class="wire"/>
+  <g transform="translate(982 198)" filter="url(#shadow)">
+    <rect x="0" y="0" width="130" height="120" rx="8" fill="#f2edff" stroke="#7950f2" class="box"/>
+    <text x="36" y="52" class="stage" fill="#6f42c1">WB</text>
+    <text x="26" y="82" class="small">registers</text>
+  </g>
+
+  <g transform="translate(92 390)">
+    <rect x="0" y="0" width="302" height="178" rx="8" fill="#f8fafc" stroke="#d2dbe8"/>
+    <text x="24" y="40" class="metric">9-bit ISA</text>
+    <text x="24" y="72" class="small">15 ops: ALU, memory,</text>
+    <text x="24" y="94" class="small">and control flow</text>
+    <g transform="translate(24 116)">
+      <rect x="0" y="0" width="62" height="38" rx="4" fill="#10203a"/>
+      <rect x="72" y="0" width="62" height="38" rx="4" fill="#3459bf"/>
+      <rect x="144" y="0" width="62" height="38" rx="4" fill="#25a36f"/>
+      <rect x="216" y="0" width="38" height="38" rx="4" fill="#f08c00"/>
+      <text x="16" y="25" class="tiny" fill="#fff">OP</text>
+      <text x="86" y="25" class="tiny" fill="#fff">RA</text>
+      <text x="158" y="25" class="tiny" fill="#fff">RB</text>
+      <text x="224" y="25" class="tiny" fill="#fff">F</text>
+    </g>
+  </g>
+
+  <g transform="translate(448 390)">
+    <rect x="0" y="0" width="270" height="178" rx="8" fill="#f8fafc" stroke="#d2dbe8"/>
+    <text x="24" y="40" class="metric">8 registers</text>
+    <text x="24" y="72" class="small">dedicated immediates</text>
+    <text x="24" y="94" class="small">and flags</text>
+    <g transform="translate(24 102)" fill="#eaf2ff" stroke="#4a76ee">
+      <rect x="0" y="0" width="38" height="32" rx="4"/>
+      <rect x="46" y="0" width="38" height="32" rx="4"/>
+      <rect x="92" y="0" width="38" height="32" rx="4"/>
+      <rect x="138" y="0" width="38" height="32" rx="4"/>
+      <rect x="0" y="42" width="38" height="32" rx="4"/>
+      <rect x="46" y="42" width="38" height="32" rx="4"/>
+      <rect x="92" y="42" width="38" height="32" rx="4"/>
+      <rect x="138" y="42" width="38" height="32" rx="4"/>
+    </g>
+  </g>
+
+  <g transform="translate(770 390)">
+    <rect x="0" y="0" width="342" height="178" rx="8" fill="#f8fafc" stroke="#d2dbe8"/>
+    <text x="24" y="40" class="metric">RTL verified</text>
+    <text x="24" y="72" class="small">modular testbenches</text>
+    <text x="24" y="94" class="small">and waveforms</text>
+    <g transform="translate(24 108)" fill="none" stroke-linecap="round">
+      <path d="M0 30 H36 V6 H78 V30 H126 V6 H168 V30 H216 V6 H286" stroke="#3459bf" stroke-width="4"/>
+      <path d="M0 66 H58 V42 H118 V66 H180 V42 H242 V66 H286" stroke="#25a36f" stroke-width="4"/>
+    </g>
+  </g>
+</svg>
