@@ -4,17 +4,17 @@
 <div class="image-gallery" style="--gallery-height: {{ gallery_height }}px;">
   {% for image_path in image_paths %}
       {% assign image_name = image_path | strip %}
-      {% if image_name contains 'https://' %}
+      {% if image_name contains '://' %}
           <img 
               src="{{ image_name }}"
               alt="Web image"
               loading="lazy"
           />
       {% else %}
-          {% assign page_url_without_index = page.url | remove: 'index' | remove: '.html' %}
+          {% assign page_asset_base = page.url | replace: '/index/', '/' | replace: 'index.html', '' %}
           <img 
-              src="{{ page_url_without_index }}{{ image_name }}" 
-              alt="{{image_name}}"
+              src="{{ page_asset_base | append: image_name | relative_url }}"
+              alt="{{ image_name }}"
               loading="lazy"
               onerror="this.onerror=null;this.src=this.src.replace('.webp','.png').replace('.png','.webp');"
           />

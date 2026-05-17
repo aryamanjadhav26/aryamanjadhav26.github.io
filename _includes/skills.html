@@ -5,12 +5,12 @@
     </div>
         
     <div class="skills-grid">
-        {% for skill in site.skills %}
+        {% for skill_group in site.skills %}
             <div class="skill-category-card">
-                <h3 class="category-title">{{ skill.category }}</h3>
+                <h3 class="category-title">{{ skill_group.category }}</h3>
                 <div class="skills-list">
-                    {% for skill in skill.tools %}
-                        <span class="skill-tag">{{ skill }}</span>
+                    {% for tool in skill_group.tools %}
+                        <span class="skill-tag">{{ tool }}</span>
                     {% endfor %}
                 </div>
             </div>

@@ -1,13 +1,13 @@
 <footer>
     <div class="footer-content">
         <div class="links">
-            <a href="/">
+            <a href="{{ '/' | relative_url }}">
                 <span>Home</span>
             </a>
-            <a href="/projects/">
+            <a href="{{ '/projects/' | relative_url }}">
                 <span>Projects</span>
             </a>
-            <a href={{site.resume-url}} target="_blank" rel="noopener noreferrer">
+            <a href="{{ site.resume-url }}" target="_blank" rel="noopener noreferrer">
                 <span>Resume</span>
             </a>
         </div>

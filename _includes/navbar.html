@@ -1,36 +1,35 @@
-<!-- _includes/nav.html -->
 <nav>
     <div class="left">
-        <a href="/">{{site.name}}</a>
+        <a href="{{ '/' | relative_url }}">{{ site.name }}</a>
     </div>
 
     <!-- Desktop Menu -->
     <div class="right desktop-nav">
-        <a href="/">
+        <a href="{{ '/' | relative_url }}">
             <span>Home</span>
         </a>
-        <a href="/projects/">
+        <a href="{{ '/projects/' | relative_url }}">
             <span>Projects</span>
         </a>
-        <a href="{{site.resume-url}}" target="_blank" rel="noopener noreferrer">
+        <a href="{{ site.resume-url }}" target="_blank" rel="noopener noreferrer">
             <span>Resume</span>
         </a>
     </div>
 
     <!-- Mobile Menu Button -->
-    <button class="menu-toggle" aria-label="Toggle menu">
+    <button class="menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
         <i class="fa fa-bars fa-2x"></i>
     </button>
 
     <!-- Mobile Menu -->
     <div class="mobile-nav">
-        <a href="/">
+        <a href="{{ '/' | relative_url }}">
             <span>Home</span>
         </a>
-        <a href="/projects/">
+        <a href="{{ '/projects/' | relative_url }}">
             <span>Projects</span>
         </a>
-        <a href="{{site.resume-url}}" target="_blank" rel="noopener noreferrer">
+        <a href="{{ site.resume-url }}" target="_blank" rel="noopener noreferrer">
             <span>Resume</span>
         </a>
     </div>
