@@ -9,7 +9,7 @@
     <meta name="description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 | escape }}{% else %}{{ site.description | strip_html | strip_newlines | truncate: 160 | escape }}{% endif %}">
     <meta name="keywords" content="Aryaman Jadhav, aryaman jadhav, electrical engineer, mmWave radar, FMCW radar, embedded systems, FPGA design, CUDA, Python, hardware design, RTL, signal processing, sensor fusion, portfolio">
     <meta name="author" content="{{ site.name | escape }}">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="{% if page.robots %}{{ page.robots }}{% else %}index, follow{% endif %}">
     <link rel="canonical" href="{{ page.url | absolute_url }}">
 
     <!-- Open Graph / Facebook -->
