@@ -4,6 +4,12 @@ title: Plant Disease Detection
 permalink: /projects/plant-disease-detection/
 category: Applied Computer Vision
 card_order: 50
+animation: leaf
+featured: false
+earlier_work: true
+discipline: Software & ML
+visitor_summary: Classifying plant leaf images across 38 crop-and-disease labels with a custom neural network.
+contribution: Built the PyTorch CNN, preprocessing, and training workflow.
 year: 2025
 github: https://github.com/aryamanjadhav26/PlantDiseaseDetection.git
 report: https://github.com/aryamanjadhav26/PlantDiseaseDetection/blob/main/Project-Report.pdf
@@ -18,12 +24,10 @@ glance:
   - label: Reported result
     value: 95.20%*
 skills:
-  - Python
-  - PyTorch
-  - Computer Vision
-  - Image Processing
-  - CNNs
-  - Classification
+  - name: CNN training and regularization
+    application: Training a five-layer PyTorch classifier with batch normalization, dropout, and validation-based tuning.
+  - name: Image preprocessing
+    application: Applying HSV leaf masking and training-only augmentation to the classification pipeline.
 main-image: /project-visual.svg
 ---
 

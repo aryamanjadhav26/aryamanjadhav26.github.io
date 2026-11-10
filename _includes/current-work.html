@@ -1,71 +1,8 @@
-<section id="current-work" class="current-work-section">
-    <div class="section-header">
-        <h2>Current Work</h2>
-        <p class="section-subtitle">Active research in progress</p>
-    </div>
-
-    <div class="current-work-card">
-        <div class="current-work-card-header">
-            <div class="work-meta">
-                <span class="work-category">Research</span>
-                <span class="active-badge">
-                    <span class="pulse-dot"></span>
-                    Active
-                </span>
-            </div>
-            <h3 class="work-title">CFAR for Indoor mmWave Human Sensing</h3>
-        </div>
-
-        <p class="work-description">
-            Developing application-specific CFAR methods for indoor human activity sensing that exploit target-relevant structure in range–Doppler maps to improve detection of extended human returns while suppressing multipath-induced ghost points.
-            A TI AWR6843ISK and DCA1000 provide raw radar captures, while a RealSense D455 supplies reference regions of interest for measuring missed detections and false alarms.
-        </p>
-
-        <div class="work-pipeline">
-            <div class="pipeline-stage">
-                <div class="pipeline-icon">
-                    <i class="fa-solid fa-satellite-dish"></i>
-                </div>
-                <span class="pipeline-label">Raw ADC Capture</span>
-                <p class="pipeline-desc">AWR6843ISK + DCA1000 acquisition through TI's MATLAB workflow</p>
-            </div>
-            <div class="pipeline-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            <div class="pipeline-stage">
-                <div class="pipeline-icon">
-                    <i class="fa-solid fa-wave-square"></i>
-                </div>
-                <span class="pipeline-label">MATLAB Processing</span>
-                <p class="pipeline-desc">Range-Doppler processing and conventional CA-CFAR baseline</p>
-            </div>
-            <div class="pipeline-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            <div class="pipeline-stage">
-                <div class="pipeline-icon">
-                    <i class="fa-solid fa-person-walking"></i>
-                </div>
-                <span class="pipeline-label">Extended-Target CFAR</span>
-                <p class="pipeline-desc">Detection logic tailored to spatially distributed human returns</p>
-            </div>
-            <div class="pipeline-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            <div class="pipeline-stage pipeline-stage--highlight">
-                <div class="pipeline-icon">
-                    <i class="fa-solid fa-brain"></i>
-                </div>
-                <span class="pipeline-label">Ground-Truth Alignment</span>
-                <p class="pipeline-desc">D455 reference ROI, manually aligned using a physical cue</p>
-            </div>
-        </div>
-
-        <div class="work-tags">
-            <span class="skill-tag">FMCW Radar</span>
-            <span class="skill-tag">Radar Signal Processing</span>
-            <span class="skill-tag">Range–Doppler Processing</span>
-            <span class="skill-tag">Statistical Detection</span>
-            <span class="skill-tag">AoA Estimation</span>
-            <span class="skill-tag">Subspace Methods</span>
-            <span class="skill-tag">Clutter Suppression</span>
-            <span class="skill-tag">Multipath Mitigation</span>
-            <span class="skill-tag">Extended-Target Detection</span>
-            <span class="skill-tag">MATLAB</span>
-        </div>
-    </div>
+<section id="current-work" class="research-section" aria-labelledby="research-heading">
+  <div class="section-heading"><h2 id="research-heading"><span class="section-index">02 /</span> Research &amp; experience</h2></div>
+  <dl class="experience-list">
+    <div><dt>MARGA Lab, Georgia Tech<span>Independent study · May 2026–present</span></dt><dd><p>Tracing information loss from radar measurements to point clouds, then investigating learned multipath rejection. Advised by Prof. Karthikeyan Sundaresan.</p><p><a class="small-link" href="{{ '/projects/indoor-sensing-research/' | relative_url }}">Research overview →</a></p></dd></div>
+    <div><dt>ID Technologies<span>Computer Engineering Intern · Jul–Sep 2024</span></dt><dd>Designed a finite-state-machine ZPL parser in embedded C for thermal-transfer printers, matching the parser to the command language's stateful grammar.</dd></div>
+    <div><dt>Engineers for Exploration, UC San Diego<span>Undergraduate Research Assistant · Dec 2021–Sep 2023</span></dt><dd>Implemented Kalman-filter fusion of accelerometer, gyroscope, and magnetometer measurements to estimate quaternion orientation for a field-deployed tracking platform.</dd></div>
+  </dl>
 </section>

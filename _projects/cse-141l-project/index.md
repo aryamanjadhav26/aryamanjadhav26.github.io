@@ -4,6 +4,13 @@ title: ANDOR-9 8-bit Processor Design
 permalink: /projects/cse-141l-project/
 category: Computer Architecture
 card_order: 40
+animation: processor
+featured: false
+earlier_work: true
+discipline: Hardware
+short_title: ANDOR-9 processor
+visitor_summary: An 8-bit processor, a custom instruction set, and an assembler to program it.
+contribution: Designed the SystemVerilog processor and built a Python assembler.
 year: 2025
 description: Designed a SystemVerilog load-store processor and assembler around a 9-bit ISA and 8-bit datapath, with multi-byte conversion routines for a custom 16-bit floating representation.
 card_summary: Compact SystemVerilog processor and assembler built around a 15-operation ISA, eight registers, and multi-byte arithmetic on an 8-bit datapath.
@@ -16,13 +23,12 @@ glance:
   - label: Challenge
     value: Multi-byte arithmetic
 skills:
-  - SystemVerilog
-  - RTL Design
-  - Computer Architecture
-  - ISA Design
-  - Numeric Conversion
-  - Assembler Design
-  - Testbenches
+  - name: RTL design and verification
+    application: Building an 8-bit SystemVerilog datapath and validating it with testbenches and waveform analysis.
+  - name: Instruction-set design
+    application: Fitting arithmetic, memory, and control flow into a 9-bit encoding with 15 operations.
+  - name: Assembler development
+    application: Implementing instruction encoding, macros, labels, and ROM generation in Python.
 main-image: /project-visual.svg
 ---
 

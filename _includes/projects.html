@@ -1,68 +1,53 @@
-<section id="projects" class="project-grid-section">
-    <div class="section-header">
-        <h2>Selected Projects</h2>
-        <p class="section-subtitle">Systems work, hardware-software design, and applied ML.</p>
+{% assign project_items = site.projects | where_exp: 'item', 'item.hidden != true' | sort: 'card_order' %}
+{% if include.featured %}{% assign project_items = project_items | where: 'featured', true %}{% endif %}
+<section id="projects" class="projects-section" aria-labelledby="projects-heading"{% unless include.featured %} data-project-browser{% endunless %}>
+  <div class="section-heading">
+    {% if include.featured %}
+      <h2 id="projects-heading"><span class="section-index">01 /</span> Selected work</h2>
+      <a class="small-link" href="{{ '/projects/' | relative_url }}">All projects ↗</a>
+    {% else %}
+      <div><p class="eyebrow">Project index</p><h1 id="projects-heading" class="page-title">Projects<span class="accent">.</span></h1></div>
+    {% endif %}
+  </div>
+  {% if include.featured %}
+    <p class="section-description">What I built, the decisions behind it, and what I learned along the way.</p>
+  {% endif %}
+  {% unless include.featured %}
+    <p class="section-description">Research, hardware, and software projects. Open a writeup for the problem, approach, experiments, and results, or browse by area.</p>
+    <div class="project-filters" data-project-filters hidden role="group" aria-label="Filter projects by area">
+      <button type="button" class="filter-button" data-filter="all" aria-pressed="true">All work</button>
+      {% assign disciplines = project_items | group_by: 'discipline' | sort: 'name' %}
+      {% for discipline in disciplines %}{% if discipline.name != '' %}
+        <button type="button" class="filter-button" data-filter="{{ discipline.name | escape }}" aria-pressed="false">{{ discipline.name }}</button>
+      {% endif %}{% endfor %}
     </div>
-
-    <div class="grid-container">
-        {% assign project_items = site.projects | sort: "card_order" %}
-        {% for item in project_items %}
-            {% unless item.hidden %}
-                {% assign folder_path = item.path | split: "/" | slice: 0, 2 | join: "/" %}
-                {% assign image_path = "/" | append: folder_path | append: item['main-image'] %}
-                <a href="{{ item.url | relative_url }}" class="project-link project-card" aria-label="Open {{ item.title }}">
-                    {% if item.year %}
-                        <span class="project-year">{{ item.year }}</span>
-                    {% endif %}
-
-                    <div class="project-heading">
-                        {% if item.category %}
-                            <span class="project-category">{{ item.category }}</span>
-                        {% endif %}
-                        <div class="project-title-row">
-                            <h3 class="project-title">{{ item.title }}</h3>
-                            {% if item.year %}
-                                <span class="project-year-pill">{{ item.year }}</span>
-                            {% endif %}
-                        </div>
-                    </div>
-
-                    <div class="project-image-container">
-                        <img src="{{ image_path | relative_url }}" alt="{{ item.visual_alt | default: item.title }}" class="project-image" loading="lazy" decoding="async">
-                    </div>
-
-                    <div class="project-content">
-                        {% assign card_glance = item.card_glance | default: item.glance %}
-                        {% if card_glance %}
-                            <dl class="project-glance">
-                                {% for point in card_glance limit: 3 %}
-                                    <div>
-                                        <dt>{{ point.label }}</dt>
-                                        <dd>{{ point.value }}</dd>
-                                    </div>
-                                {% endfor %}
-                            </dl>
-                        {% endif %}
-
-                        <p class="project-description">{{ item.card_summary | default: item.description }}</p>
-
-                        <div class="project-card-footer">
-                            <div class="project-skills">
-                                {% if item.card_skills %}
-                                    {% for skill in item.card_skills %}
-                                        <span class="skill-tag">{{ skill }}</span>
-                                    {% endfor %}
-                                {% else %}
-                                    {% for skill in item.skills limit: 4 %}
-                                        <span class="skill-tag">{{ skill }}</span>
-                                    {% endfor %}
-                                {% endif %}
-                            </div>
-                            <span class="project-cta">Open <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
-                        </div>
-                    </div>
-                </a>
-            {% endunless %}
-        {% endfor %}
-    </div>
+    <p class="project-count" data-project-count role="status" aria-live="polite">{{ project_items.size }} projects</p>
+  {% endunless %}
+  <ol class="project-list">
+    {% for item in project_items %}
+      <li class="project-entry" data-project data-discipline="{{ item.discipline | escape }}">
+        <a class="project-row" href="{{ item.url | relative_url }}" aria-labelledby="project-title-{{ forloop.index }}">
+          <span class="project-number" aria-hidden="true">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+          <div class="project-copy">
+            <p class="project-category">{{ item.discipline | escape }}{% if item.project_status %} <span class="project-state">{{ item.project_status | escape }}</span>{% elsif item.earlier_work %} <span class="project-state">Earlier work</span>{% endif %}</p>
+            <h3 id="project-title-{{ forloop.index }}">{{ item.short_title | default: item.title | escape }}</h3>
+            <p class="project-summary">{{ item.visitor_summary | default: item.card_summary | default: item.description | escape }}</p>
+          </div>
+          <div class="project-side" aria-hidden="true">
+            {% if item.animation %}
+              {% include project-animation.html kind=item.animation %}
+            {% elsif item.card_visual %}
+              {% assign folder_path = item.path | split: '/' | slice: 0, 2 | join: '/' %}
+              {% assign card_image = '/' | append: folder_path | append: item.card_visual %}
+              <img class="project-thumbnail" src="{{ card_image | relative_url }}" width="960" height="360" alt="" loading="lazy" decoding="async">
+            {% endif %}
+            <span class="project-open">Read project <span>↗</span></span>
+          </div>
+        </a>
+      </li>
+    {% endfor %}
+  </ol>
+  {% if include.featured %}
+    <div class="project-browse-more"><a class="text-link" href="{{ '/projects/' | relative_url }}">Explore more projects <span aria-hidden="true">→</span></a></div>
+  {% endif %}
 </section>

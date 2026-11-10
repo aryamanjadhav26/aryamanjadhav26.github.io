@@ -1,0 +1,67 @@
+<div class="project-motion motion-{{ include.kind | escape }}" data-project-motion>
+  <svg viewBox="0 0 320 140" role="img" aria-label="{{ include.label | default: 'Conceptual project animation' | escape }}">
+    {% case include.kind %}
+    {% when 'radar' %}
+      <path class="motion-grid" d="M20 28h280M20 56h280M20 84h280M20 112h280M60 16v108M110 16v108M160 16v108M210 16v108M260 16v108"/>
+      <g class="motion-green"><rect x="79" y="48" width="8" height="8"/><rect x="91" y="61" width="8" height="8"/><rect x="75" y="75" width="8" height="8"/><rect x="91" y="87" width="8" height="8"/><rect x="203" y="58" width="8" height="8"/><rect x="215" y="73" width="8" height="8"/></g>
+      <g class="motion-muted motion-reject"><rect x="139" y="33" width="7" height="7"/><rect x="152" y="88" width="7" height="7"/><rect x="260" y="38" width="7" height="7"/><rect x="244" y="98" width="7" height="7"/></g>
+      <path class="motion-scan" d="M25 18v100"/>
+      <text x="20" y="137">DETECT / REJECT MULTIPATH</text>
+    {% when 'circuit' %}
+      <path class="motion-wire" d="M24 34h38v20h38M24 106h38V86h38M112 54h46v16h42M112 86h46V70h42M212 70h52"/>
+      <g class="motion-green"><rect x="20" y="30" width="8" height="8"/><rect x="20" y="102" width="8" height="8"/></g>
+      <rect class="motion-node motion-stage" x="96" y="44" width="22" height="22"/>
+      <rect class="motion-node motion-stage" style="--step:1" x="96" y="76" width="22" height="22"/>
+      <rect class="motion-node motion-stage" style="--step:2" x="196" y="60" width="22" height="22"/>
+      <rect class="motion-node motion-stage" style="--step:3" x="266" y="57" width="26" height="26"/>
+      <path class="motion-wire motion-refine" d="M62 34h94v52h42"/>
+      <text x="20" y="137">GENERATE / SIMULATE / REFINE</text>
+    {% when 'broadcast' %}
+      <rect class="motion-node" x="20" y="47" width="42" height="48"/><path class="motion-wire" d="M30 60h22M30 72h16M62 70h130M192 70h35V34h35M227 70h35M227 70v36h35"/>
+      <rect class="motion-green motion-packet" x="70" y="65" width="10" height="10"/>
+      <rect class="motion-green motion-packet" style="--step:1" x="70" y="65" width="10" height="10"/>
+      <rect class="motion-node motion-stage" style="--step:1" x="264" y="23" width="32" height="22"/><rect class="motion-node motion-stage" style="--step:2" x="264" y="59" width="32" height="22"/><rect class="motion-node" x="264" y="95" width="32" height="22"/>
+      <text x="20" y="137">SCHEDULE / BROADCAST / UPDATE</text>
+    {% when 'posture' %}
+      <g class="motion-green"><rect x="46" y="24" width="9" height="9"/><rect x="39" y="42" width="9" height="9"/><rect x="56" y="44" width="9" height="9"/><rect x="43" y="60" width="9" height="9"/><rect x="61" y="71" width="9" height="9"/><rect x="31" y="82" width="9" height="9"/><rect x="70" y="90" width="9" height="9"/></g>
+      <path class="motion-wire" d="M96 68h57M181 68h27"/><rect class="motion-node motion-stage" x="153" y="48" width="30" height="40"/>
+      <g class="motion-muted"><rect x="218" y="76" width="10" height="29"/><rect x="235" y="66" width="10" height="39"/><rect x="252" y="54" width="10" height="51"/><rect x="269" y="79" width="10" height="26"/><rect x="286" y="83" width="10" height="22"/></g>
+      <rect class="motion-node motion-stage" style="--step:2" x="252" y="54" width="10" height="51"/>
+      <path class="motion-scan motion-short-scan" d="M20 18v94"/>
+      <text x="20" y="137">POINT CLOUD / FIVE POSTURES</text>
+    {% when 'pipeline' %}
+      <path class="motion-wire" d="M20 70h280"/>
+      {% for stage in (0..4) %}{% assign stage_x = stage | times: 58 | plus: 22 %}<rect class="motion-node motion-stage" style="--step:{{ stage }}" x="{{ stage_x }}" y="45" width="42" height="50"/>{% endfor %}
+      <rect class="motion-green motion-pipeline-token" x="27" y="63" width="8" height="14"/>
+      <text x="20" y="137">FIVE-STAGE DATAFLOW PIPELINE</text>
+    {% when 'rectenna' %}
+      <path class="motion-wire motion-rf-wave" d="M18 70h10l12-22 16 44 16-44 16 44 12-22h16"/>
+      <g class="motion-node">{% for element in (0..5) %}{% assign element_x = element | modulo: 3 | times: 27 | plus: 135 %}{% assign element_y = element | divided_by: 3 | times: 29 | plus: 43 %}<rect x="{{ element_x }}" y="{{ element_y }}" width="17" height="17"/>{% endfor %}</g>
+      <path class="motion-wire" d="M215 70h24v-16h61"/><path class="motion-wire motion-dc" d="M240 85h60"/>
+      <rect class="motion-green motion-packet" x="96" y="65" width="8" height="8"/>
+      <text x="20" y="137">RF INPUT / RECTENNA / DC OUTPUT</text>
+    {% when 'racing' %}
+      <path class="motion-grid" d="M18 42h282M18 103h282"/><path class="motion-wire" stroke-dasharray="9 9" d="M18 73h282"/>
+      <g class="motion-car"><rect class="motion-node" x="32" y="59" width="42" height="28"/><rect class="motion-green" x="39" y="64" width="22" height="18"/><path class="motion-wire" d="M38 54h10M60 54h10M38 92h10M60 92h10"/></g>
+      <g class="motion-green"><rect x="114" y="69" width="6" height="6"/><rect x="192" y="69" width="6" height="6"/><rect x="270" y="69" width="6" height="6"/></g>
+      <text x="20" y="137">LOCALIZATION / PLANNING / CONTROL</text>
+    {% when 'processor' %}
+      <path class="motion-wire" d="M20 70h280"/>
+      {% for stage in (0..3) %}{% assign stage_x = stage | times: 73 | plus: 20 %}<rect class="motion-node motion-stage" style="--step:{{ stage }}" x="{{ stage_x }}" y="45" width="58" height="50"/>{% endfor %}
+      <text class="motion-stage-label" x="32" y="75">IF</text><text class="motion-stage-label" x="105" y="75">ID</text><text class="motion-stage-label" x="178" y="75">EX</text><text class="motion-stage-label" x="251" y="75">WB</text>
+      <text x="20" y="137">FETCH / DECODE / EXECUTE / WRITE</text>
+    {% when 'leaf' %}
+      <g class="motion-green"><path d="M40 82V53h12V41h12V29h42v42H94v12H82v12H52V82z"/><path d="M40 92h12v12H40z"/></g>
+      <path class="motion-wire" d="M119 68h32M185 68h25"/><rect class="motion-node motion-stage" x="151" y="47" width="34" height="42"/>
+      <g class="motion-muted"><rect x="220" y="77" width="12" height="26"/><rect x="241" y="40" width="12" height="63"/><rect x="262" y="65" width="12" height="38"/><rect x="283" y="83" width="12" height="20"/></g>
+      <rect class="motion-node motion-stage" style="--step:2" x="241" y="40" width="12" height="63"/>
+      <path class="motion-scan motion-short-scan" d="M20 18v94"/>
+      <text x="20" y="137">LEAF IMAGE / CNN / CLASSIFICATION</text>
+    {% when 'database' %}
+      <path class="motion-wire" d="M22 47h62M22 64h45M22 81h53M84 68h47M171 68h52"/><rect class="motion-node motion-stage" x="131" y="45" width="40" height="47"/>
+      <rect class="motion-node motion-stage" style="--step:1" x="228" y="29" width="64" height="22"/><rect class="motion-node motion-stage" style="--step:2" x="228" y="58" width="64" height="22"/><rect class="motion-node motion-stage" style="--step:3" x="228" y="87" width="64" height="22"/>
+      <rect class="motion-green motion-packet" x="86" y="64" width="8" height="8"/>
+      <text x="20" y="137">PARSE / EXECUTE / STORE</text>
+    {% endcase %}
+  </svg>
+</div>

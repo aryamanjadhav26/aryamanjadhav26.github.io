@@ -4,41 +4,38 @@ title: GPS-Guided RC Racing Integration
 permalink: /projects/autonomous-vehicle-development-platform/
 category: Embedded Autonomy
 card_order: 30
+animation: racing
+featured: false
+earlier_work: true
+discipline: Real-Time Systems
+short_title: GPS-guided RC racing
+visitor_summary: Connecting a GPS receiver's localization output to an existing RC-car control stack.
+contribution: Configured the receiver's fusion mode and built the localization data-format adapter.
 year: 2025
-description: Integrated RTK-GNSS localization and TUM raceline-planning ROS nodes into a Donkey Car stack running on a Jetson Nano.
-card_summary: ROS2 integration project connecting RTK-GNSS state estimation and TUM raceline planning to an existing Donkey Car control stack.
-visual_alt: Diagram of an RC racing stack from Point One RTK-GNSS and IMU through EKF prediction and TUM raceline planning into the Donkey Car framework.
+description: A team RC-racing project, with my contribution focused on receiver configuration and a data-format adapter for an existing Donkey Car pipeline.
+card_summary: Receiver configuration and localization data adaptation within a team RC-racing system.
+visual_alt: Conceptual illustration of an RC-car system.
 glance:
-  - label: Platform
-    value: Jetson + ROS2
-  - label: Contribution
-    value: System integration
-  - label: Planning
-    value: TUM raceline
+  - label: My scope
+    value: Localization interface
+  - label: Existing platform
+    value: Donkey Car
+  - label: Setting
+    value: Team project
 skills:
-  - ROS2
-  - Docker
-  - Embedded Linux
-  - NVIDIA Jetson
-  - RTK-GNSS
-  - EKF Integration
-  - Donkey Car
+  - name: Hardware configuration
+    application: Using receiver documentation to select its sensor-fusion mode for the localization pipeline.
+  - name: Data interface integration
+    application: Writing a localization data-format adapter for an existing ROS-based Donkey Car stack.
 main-image: /project-visual.svg
 ---
 
-## What It Does
+## The team project
 
-This team project connected GPS-guided racing components to an existing RC autonomy framework. My work focused on integrating ROS localization and planning nodes with Donkey Car rather than developing the underlying controller or TUM planning algorithm.
+The team worked on GPS-guided RC racing using an existing Donkey Car control pipeline. Localization and race-line planning were parts of the broader system.
 
-## System Flow
+## My contribution
 
-- Point One RTK-GNSS and IMU measurements enter ROS2 nodes running on the Jetson Nano.
-- EKF prediction increases the localization-state update rate from 10 Hz measurements to a 40 Hz estimate for downstream planning.
-- TUM raceline-optimization and path-planning nodes generate the racing trajectory.
-- The planned trajectory is passed into the existing Donkey Car framework, which supplies the low-level control and vehicle actuation.
+I read the receiver documentation, changed its fusion configuration, and developed a data-format adapter to connect the localization output to the ROS-based Donkey Car pipeline. Sensor fusion was performed by the receiver module.
 
-## Engineering Focus
-
-- Built a Dockerized WSL environment that matched the Jetson software dependencies, reducing hardware-only debugging.
-- Integrated independently developed ROS nodes across localization, planning, and the Donkey Car runtime.
-- Kept the interfaces modular so state-estimation and planning components could be tested separately from the vehicle controller.
+The engineering work was at the interface: making an existing localization output usable by an existing control system. The team's race-line optimization provides context for the project; my documented contribution is the receiver configuration and adapter.

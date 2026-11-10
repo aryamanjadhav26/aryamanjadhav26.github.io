@@ -1,36 +1,8 @@
-<nav>
-    <div class="left">
-        <a href="{{ '/' | relative_url }}">{{ site.name }}</a>
-    </div>
-
-    <!-- Desktop Menu -->
-    <div class="right desktop-nav">
-        <a href="{{ '/' | relative_url }}">
-            <span>Home</span>
-        </a>
-        <a href="{{ '/projects/' | relative_url }}">
-            <span>Projects</span>
-        </a>
-        <a href="{{ site.resume-url }}" target="_blank" rel="noopener noreferrer">
-            <span>Resume</span>
-        </a>
-    </div>
-
-    <!-- Mobile Menu Button -->
-    <button class="menu-toggle" type="button" aria-label="Toggle navigation menu" aria-controls="mobile-menu" aria-expanded="false">
-        <span class="hamburger" aria-hidden="true"></span>
-    </button>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-nav" id="mobile-menu">
-        <a href="{{ '/' | relative_url }}">
-            <span>Home</span>
-        </a>
-        <a href="{{ '/projects/' | relative_url }}">
-            <span>Projects</span>
-        </a>
-        <a href="{{ site.resume-url }}" target="_blank" rel="noopener noreferrer">
-            <span>Resume</span>
-        </a>
-    </div>
-</nav>
+<header class="site-header" id="top">
+  <a class="site-brand" href="{{ '/' | relative_url }}" aria-label="Aryaman Jadhav, home"><span class="accent">aj_</span><span class="brand-label"> / portfolio</span></a>
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="{{ '/projects/' | relative_url }}"{% if page.url == '/projects/' %} aria-current="page"{% elsif page.collection == 'projects' %} aria-current="true"{% endif %}>Projects</a>
+    <a href="{{ site.resume-url }}" target="_blank" rel="noopener noreferrer">Resume ↗<span class="sr-only"> (opens in a new tab)</span></a>
+    <a href="{{ '/#contact' | relative_url }}">Contact</a>
+  </nav>
+</header>

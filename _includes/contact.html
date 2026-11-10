@@ -1,25 +1,7 @@
-<section id="contact" class="contact-section">
-    <h2>Get in touch</h2>
-    <p class="contact-subtitle">Open to collaboration, project ideas, or meals that don't get old.</p>
-
-    <div class="contact-info">
-        <div class="contact-item">
-            <div class="contact-details">
-                <h3>Email</h3>
-                <a href="mailto:aryamanjadhav26@gmail.com" class="contact-link">
-                    <span class="contact-text">aryamanjadhav26@gmail.com</span>
-                </a>
-            </div>
-        </div>
-        
-        <div class="contact-item">
-            <div class="contact-details">
-                <h3>LinkedIn</h3>
-                <a href="https://www.linkedin.com/in/aryamanjadhav/" target="_blank" rel="noopener noreferrer" class="contact-link">
-                    <span class="contact-text">linkedin.com/in/aryamanjadhav</span>
-                    <i class="fas fa-external-link-alt"></i>
-                </a>
-            </div>
-        </div>
-    </div>
+<section id="contact" class="contact-section" aria-labelledby="contact-heading">
+  <div class="section-heading"><h2 id="contact-heading"><span class="section-index">02 /</span> Let's talk<span class="accent">.</span></h2></div>
+  <p>Open to collaboration, project ideas, or meals that don't get old.</p>
+  <div class="contact-links"><a class="email-link" href="mailto:{{ site.email }}">{{ site.email }}</a><button class="quiet-button" type="button" data-copy-email="{{ site.email }}" hidden>Copy email</button></div>
+  <p class="copy-status" data-copy-status role="status" aria-live="polite"></p>
+  <div class="social-links"><a href="https://www.linkedin.com/in/{{ site.external-links.linkedin }}/" target="_blank" rel="noopener noreferrer">LinkedIn ↗<span class="sr-only"> (opens in a new tab)</span></a><a href="https://github.com/{{ site.external-links.github }}" target="_blank" rel="noopener noreferrer">GitHub ↗<span class="sr-only"> (opens in a new tab)</span></a><a href="{{ site.resume-url }}" target="_blank" rel="noopener noreferrer">Resume ↗<span class="sr-only"> (opens in a new tab)</span></a></div>
 </section>

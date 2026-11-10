@@ -3,30 +3,33 @@ layout: post
 title: Monte Carlo Asian Option Pricer on FPGA
 permalink: /projects/fpga-monte-carlo-option-pricer/
 category: FPGA Acceleration
-card_order: 10
+card_order: -30
+animation: pipeline
+featured: true
+discipline: Hardware
+short_title: FPGA Monte Carlo Option Pricer
+visitor_summary: A streaming FPGA accelerator for Monte Carlo option pricing.
+contribution: Designed the streaming HLS kernel and optimized the simulation stages.
 year: 2026
+period: Feb–Apr 2026
+project_status: Completed build
 description: Vitis HLS Monte Carlo Asian option pricer that computes price, delta, gamma, and vega in a five-stage streaming pipeline synthesized as one FPGA kernel.
 card_summary: Five-stage HLS dataflow design for Asian-option price and Greeks, with a Taylor approximation that shares one exponential across base and volatility-bumped paths.
 visual_alt: Diagram of a five-stage HLS dataflow pipeline on FPGA. Seeds stream into a xorshift PRNG, a Box-Muller transform with cosine LUT, GBM path simulation across 64 paths × 64 timesteps, and a payoff-reduction stage that emits price, delta, gamma, and vega.
 glance:
-  - label: Speedup
-    value: 3,228× HLS estimate
-  - label: Est. latency
-    value: 4.4 µs
+  - label: RTL co-simulation
+    value: Pass · 1,646 cycles
+  - label: Routed timing
+    value: Met 3.5 ns constraint
   - label: Pipeline
     value: 5 dataflow stages
-card_skills:
-  - Vitis HLS
-  - C++
-  - FPGA
-  - Monte Carlo
-  - Quantitative Finance
 skills:
-  - Vitis HLS
-  - C++
-  - FPGA
-  - Monte Carlo
-  - Quantitative Finance
+  - name: HLS dataflow design
+    application: Building a five-stage C++ streaming kernel with concurrent stages in Vitis HLS.
+  - name: Hardware resource optimization
+    application: Partitioning arrays, duplicating lookup tables, and sharing exponential computation across simulation paths.
+  - name: Hardware performance analysis
+    application: Evaluating RTL co-simulation cycles, resource use, and routed timing together.
 main-image: /project-visual.svg
 ---
 
@@ -56,15 +59,10 @@ The design is a five-stage `#pragma HLS DATAFLOW` pipeline, with stages running 
 
 ## Results
 
-| Metric | Baseline (Gold) | Optimized | Improvement |
-| --- | ---: | ---: | ---: |
-| HLS-estimated latency | 14.32 ms | 4.4 µs | - |
-| Cycles | 1,838,622 | 1,650 | ~1,114× |
-| Estimated clock period | 7.788 ns | 2.688 ns | ~2.9× |
-| Estimated latency speedup | - | - | ~3,228× |
+The saved RTL co-simulation reports **Pass at 1,646 cycles**. The routed implementation meets a **3.5 ns clock constraint with positive setup slack**. These are tool results, not board-level timing measurements.
 
-These figures compare Vitis HLS synthesis estimates for the baseline and optimized designs; they are not a CPU-versus-FPGA benchmark or a board-level timing measurement.
-The optimized implementation's total numerical error was below 1% when compared with the gold baseline; this is an end-to-end result rather than an isolated Taylor-approximation error.
+The design was evaluated through cycle count, resource utilization, and achievable clock period. Those measures matter together: reducing cycles can still increase execution time if the design requires a slower clock.
+
 
 ## Tech Stack
 

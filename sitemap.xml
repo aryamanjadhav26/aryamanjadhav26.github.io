@@ -20,6 +20,7 @@ layout: null
 
   <!-- Project Pages -->
   {% for project in site.projects %}
+  {% unless project.hidden %}
   <url>
     <loc>{{ project.url | absolute_url }}</loc>
     {% assign lastmod = project.date | default: site.time %}
@@ -27,5 +28,6 @@ layout: null
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  {% endunless %}
   {% endfor %}
 </urlset>

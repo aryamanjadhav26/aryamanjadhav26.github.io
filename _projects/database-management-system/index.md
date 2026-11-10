@@ -4,6 +4,12 @@ title: Database Management System
 permalink: /projects/database-management-system/
 category: Systems Architecture
 card_order: 60
+animation: database
+featured: false
+earlier_work: true
+discipline: Software & ML
+visitor_summary: A small C++ database engine that routes commands through parsing, execution, and storage layers.
+contribution: Built the engine foundation with separate command, storage, and presentation layers.
 year: 2024
 description: Built a lightweight C++ DBMS skeleton with a tokenizer, command router, block storage layer, and tabular output views.
 card_summary: C++ database-engine foundation with explicit boundaries between tokenization, command dispatch, block storage, and presentation.
@@ -23,12 +29,12 @@ glance:
   - label: Pattern
     value: Command chain
 skills:
-  - C++
-  - Database Internals
-  - Parsing
-  - Block Storage
-  - API Design
-  - Regression Testing
+  - name: C++ interface design
+    application: Separating command handling, block storage, and output behind small interfaces.
+  - name: Command parsing
+    application: Building tokenization and command dispatch so execution logic does not manipulate raw input.
+  - name: Regression testing
+    application: Exercising the interactive controller path through script-level tests.
 main-image: /project-visual.svg
 ---
 

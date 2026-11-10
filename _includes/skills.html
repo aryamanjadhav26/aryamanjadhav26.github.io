@@ -1,19 +1,10 @@
-<section id="skills" class="skills-section">
-    <div class="section-header">
-        <h2>Skills</h2>
-        <p class="section-subtitle">Technologies and tools I work with</p>
-    </div>
-        
-    <div class="skills-grid">
-        {% for skill_group in site.skills %}
-            <div class="skill-category-card">
-                <h3 class="category-title">{{ skill_group.category }}</h3>
-                <div class="skills-list">
-                    {% for tool in skill_group.tools %}
-                        <span class="skill-tag">{{ tool }}</span>
-                    {% endfor %}
-                </div>
-            </div>
-        {% endfor %}
-    </div>
+<section id="skills" class="about-section" aria-labelledby="about-heading">
+  <div class="section-heading"><h2 id="about-heading"><span class="section-index">03 /</span> A little background</h2></div>
+  <p class="personal-note">I'm pursuing my master's in electrical and computer engineering at Georgia Tech, after completing my bachelor's at UC San Diego in 2025. My projects span sensing, digital hardware, and machine learning, with a lot of attention to what happens between an idea and a working system.</p>
+  <details class="skills-details">
+    <summary>Tools &amp; engineering areas <span class="detail-hint" aria-hidden="true">+</span></summary>
+    <dl class="skills-list">
+      {% for skill_group in site.skills %}<div><dt>{{ skill_group.category }}</dt><dd>{{ skill_group.tools | join: ', ' }}</dd></div>{% endfor %}
+    </dl>
+  </details>
 </section>

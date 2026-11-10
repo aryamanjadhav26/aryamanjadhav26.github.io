@@ -14,10 +14,15 @@ title: Aryaman Jadhav # This is what shows up in the tab of the browser
 
 # Hero section
 name: Aryaman Jadhav
+email: aryamanjadhav26@gmail.com
+terminal_intro: I like building things and figuring out how they work.
+personal_note: >-
+  Currently chasing a squat number that won't move, eating the same four meals on rotation,
+  and convincing myself markets aren't just gaussians with extra steps.
 description: >-
-  Electrical engineering portfolio focused on radar, signal processing, embedded systems, RF design, and FPGA acceleration.
+  Electrical and computer engineering portfolio spanning hardware, software, machine learning, and systems research.
 hero_intro: >-
-  Currently: trying to push the limits of small aperture radars, chasing a squat number that won't move, eating the same four meals on rotation, and convincing myself markets aren't just gaussians with extra steps.
+  I like building things and figuring out how they work.
   
 
 
@@ -61,11 +66,10 @@ skills:
       - Extended-target detection
   - category: Perception, Localization & Control
     tools:
-      - EKF state estimation
+      - Kalman-filter sensor fusion
       - Multi-sensor calibration
       - RTK-GNSS localization
-      - Real-time perception on ROS2
-      - PID control
+      - ROS integration
   - category: Applied ML & Computer Vision
     tools:
       - CNN classification
@@ -206,6 +210,9 @@ social:
 # their entries' file path in the `include:` list.
 #
 exclude:
+  - design
+  - scripts
+  - tmp
   - Reference
   - README.md
   - assets/readme

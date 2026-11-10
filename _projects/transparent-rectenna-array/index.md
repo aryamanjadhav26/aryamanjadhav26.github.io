@@ -4,6 +4,13 @@ title: Transparent Rectenna Array for Space Applications
 permalink: /projects/transparent-rectenna-array/
 category: RF Energy Harvesting
 card_order: 20
+animation: rectenna
+featured: false
+earlier_work: true
+discipline: RF & Sensing
+short_title: Transparent Rectenna Array
+visitor_summary: Modeling how a transparent antenna array turns radio-frequency energy into DC power.
+contribution: Built the scalable HFSS-to-ADS co-simulation for the team-designed array.
 year: 2026
 description: Built a scalable ADS co-simulation for a team-designed transparent fused-quartz rectenna array by translating the HFSS multiport model into circuit-level elements.
 card_summary: HFSS-to-ADS modeling work that turns a six-element antenna-array S-parameter model into a scalable rectifier simulation.
@@ -16,13 +23,10 @@ glance:
   - label: Output
     value: 4.51 V simulated
 skills:
-  - HFSS
-  - ADS
-  - RF Energy Harvesting
-  - Antenna Design
-  - S-Parameters
-  - Rectifier Design
-  - Fused Quartz
+  - name: EM–circuit co-simulation
+    application: Translating HFSS multiport S-parameters into a scalable ADS rectifier model.
+  - name: RF-to-DC performance analysis
+    application: Sweeping incident power to evaluate simulated DC output and conversion efficiency.
 main-image: /project-visual.svg
 paper: /_projects/transparent-rectenna-array/paper.pdf
 ---

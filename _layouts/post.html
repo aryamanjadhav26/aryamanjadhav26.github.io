@@ -1,77 +1,63 @@
 ---
 layout: wrapper
 ---
+<div class="project-page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="{{ '/projects/' | relative_url }}">← All projects</a></nav>
+  <header class="project-header">
+    <p class="eyebrow">{{ page.category | escape }}{% if page.period %} / {{ page.period | escape }}{% elsif page.year %} / {{ page.year }}{% endif %}{% if page.project_status %} / {{ page.project_status | escape }}{% endif %}{% if page.earlier_work %} / Earlier work{% endif %}</p>
+    <h1>{{ page.title | escape }}</h1>
+    <p class="project-description">{{ page.description }}</p>
+    {% if page.contribution %}<p class="project-attribution"><span>My contribution /</span> {{ page.contribution | escape }}</p>{% endif %}
+  </header>
+  {% if page.glance %}
+    <dl class="project-glance">{% for point in page.glance %}<div><dt>{{ point.label }}</dt><dd>{{ point.value }}</dd></div>{% endfor %}</dl>
+  {% endif %}
+  {% assign primary_report = page.report %}
+  {% if page.report_secondary %}{% assign primary_report = false %}{% endif %}
+  {% if page.github or primary_report or page.paper or page.poster or page.demo %}
+    <nav class="project-actions" aria-label="Project resources">
+      {% if page.github %}<a href="{{ page.github }}" target="_blank" rel="noopener noreferrer">Source code ↗<span class="sr-only"> (opens in a new tab)</span></a>{% endif %}
+      {% if page.demo %}<a href="{{ page.demo }}" target="_blank" rel="noopener noreferrer">Demo ↗<span class="sr-only"> (opens in a new tab)</span></a>{% endif %}
+      {% if primary_report %}<a href="{{ page.report | relative_url }}" target="_blank" rel="noopener noreferrer">{{ page.report_label | default: 'Report' | escape }} ↗<span class="sr-only"> (opens in a new tab)</span></a>{% endif %}
+      {% if page.paper %}<a href="{{ page.paper | relative_url }}" target="_blank" rel="noopener noreferrer">Paper ↗<span class="sr-only"> (opens in a new tab)</span></a>{% endif %}
+      {% if page.poster %}<a href="{{ page.poster | relative_url }}" target="_blank" rel="noopener noreferrer">Poster ↗<span class="sr-only"> (opens in a new tab)</span></a>{% endif %}
+    </nav>
+  {% endif %}
+  <div class="project-body">
+    <aside class="project-sidebar" aria-label="Project navigation and applied skills">
+      <div class="project-sidebar-inner">
+        <nav data-project-toc hidden aria-label="On this page"><p class="toc-heading">On this page</p><ol class="toc-list"></ol></nav>
+        {% if page.skills %}
+          <details class="project-tools">
+            <summary>Skills applied</summary>
+            <dl>{% for skill in page.skills %}<div><dt>{{ skill.name | escape }}</dt><dd>{{ skill.application | escape }}</dd></div>{% endfor %}</dl>
+          </details>
+        {% endif %}
+      </div>
+    </aside>
+    <article class="content" data-project-content aria-label="Project details">{{ content | replace: '<table>', '<div class="table-scroll" role="region" aria-label="Scrollable project data" tabindex="0"><table>' | replace: '</table>', '</table></div>' }}
+{% if page.animation %}<details class="project-illustration"><summary>Conceptual illustration</summary>
+  {% if page.animation %}
+    <figure class="project-motion-figure" data-project-visual>
+      {% include project-animation.html kind=page.animation label=page.short_title %}
+      <figcaption><span>{{ page.visual_caption | default: 'Conceptual animation' | escape }}</span><button class="quiet-button" type="button" data-replay-visual hidden>Replay animation</button></figcaption>
+    </figure>
+  {% endif %}
 
-<div class="post-view">
-    <section class="project-hero">
-        {% assign folder_path = page.path | split: "/" | slice: 0, 2 | join: "/" %}
-        {% assign image_path = "/" | append: folder_path | append: page['main-image'] %}       
-        <div class="project-hero-visual">
-            <img src="{{ image_path | relative_url }}" alt="{{ page.visual_alt | default: page.title }}">
-        </div>
-
-        <div class="project-hero-copy">
-            {% if page.category %}
-                <span class="project-category">{{ page.category }}</span>
-            {% endif %}
-            <h1>{{ page.title }}</h1>
-            <p>{{ page.description }}</p>
-
-            {% if page.glance %}
-                <dl class="project-hero-glance">
-                    {% for point in page.glance %}
-                        <div>
-                            <dt>{{ point.label }}</dt>
-                            <dd>{{ point.value }}</dd>
-                        </div>
-                    {% endfor %}
-                </dl>
-            {% endif %}
-
-            {% if page.github or page.report or page.paper or page.poster %}
-                <div class="project-actions">
-                    {% if page.github %}
-                        <a class="project-action" href="{{ page.github }}" target="_blank" rel="noopener noreferrer">
-                            <i class="fa-brands fa-github" aria-hidden="true"></i>
-                            GitHub
-                        </a>
-                    {% endif %}
-                    {% if page.report %}
-                        <a class="project-action" href="{{ page.report }}" target="_blank" rel="noopener noreferrer">
-                            <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
-                            Report
-                        </a>
-                    {% endif %}
-                    {% if page.paper %}
-                        <a class="project-action" href="{{ page.paper | relative_url }}" target="_blank" rel="noopener noreferrer">
-                            <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
-                            Paper
-                        </a>
-                    {% endif %}
-                    {% if page.poster %}
-                        <a class="project-action" href="{{ page.poster | relative_url }}" target="_blank" rel="noopener noreferrer">
-                            <i class="fa-solid fa-chalkboard" aria-hidden="true"></i>
-                            Poster
-                        </a>
-                    {% endif %}
-                </div>
-            {% endif %}
-        </div>
-    </section>
-
-    <div class="project-body">
-        <aside class="project-skill-rail" aria-label="Project tools">
-            <h2>Tools</h2>
-            <div class="project-tool-list">
-                {% for skill in page.skills %}
-                    <span class="project-tool">{{ skill }}</span>
-                {% endfor %}
-            </div>
-        </aside>
-
-        <article class="content">
-            {{ content }}
-        </article>
-    </div>
+</details>{% endif %}</article>
+  </div>
+  <nav class="project-pagination" aria-label="More projects">
+    <a href="{{ '/projects/' | relative_url }}">← All projects</a>
+    {% assign visible_projects = site.projects | where_exp: 'item', 'item.hidden != true' | sort: 'card_order' %}
+    {% if visible_projects.size > 1 %}
+      {% for item in visible_projects %}
+        {% if item.url == page.url %}
+          {% assign next_index = forloop.index0 | plus: 1 | modulo: visible_projects.size %}
+          {% assign next_project = visible_projects[next_index] %}
+          <a class="project-next" href="{{ next_project.url | relative_url }}"><span>Next project</span>{{ next_project.short_title | default: next_project.title }} →</a>
+          {% break %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  </nav>
 </div>
-

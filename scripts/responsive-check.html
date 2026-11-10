@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Portfolio responsive checks</title></head>
+<body><pre id="results">Running</pre><div id="stage"></div>
+<script>
+(async () => {
+  const paths = ['/', '/projects/', '/projects/indoor-sensing-research/', '/projects/aigen/', '/projects/offline-disaster-information/', '/projects/radar-posture-recognition/', '/projects/fpga-monte-carlo-option-pricer/', '/projects/transparent-rectenna-array/', '/projects/autonomous-vehicle-development-platform/', '/projects/cse-141l-project/', '/projects/plant-disease-detection/', '/projects/database-management-system/', '/404.html'];
+  const sizes = [320, 375, 390, 520, 768, 1024, 1440];
+  const reports = [];
+  for (const width of sizes) {
+    for (let start = 0; start < paths.length; start += 4) {
+      await Promise.all(paths.slice(start, start + 4).map(path => new Promise(resolve => {
+        const frame = document.createElement('iframe');
+        frame.style.cssText = `display:block;border:0;width:${width}px;height:900px;`;
+        const timeout = setTimeout(() => { reports.push({ width, path, error:'load timeout' }); frame.remove(); resolve(); }, 12000);
+        frame.onload = async () => {
+          const doc = frame.contentDocument;
+          if (!doc || !doc.querySelector('main')) return;
+          await Promise.race([doc.fonts.ready, new Promise(done => setTimeout(done, 1200))]);
+          const freeze = doc.createElement('style');
+          freeze.textContent = '* { animation:none !important; transition:none !important; }';
+          doc.head.appendChild(freeze);
+          const measure = (zoom) => {
+            const viewport = frame.contentWindow.innerWidth;
+            const issues = [];
+            if (doc.documentElement.scrollWidth > viewport + 1) {
+              const offenders = Array.from(doc.body.querySelectorAll('*')).filter(el => {
+                if (el.closest('svg, .table-scroll, pre') || el.classList.contains('sr-only') || el.classList.contains('skip-link')) return false;
+                const box = el.getBoundingClientRect();
+                return box.width && (box.right > viewport + 1 || box.left < -1);
+              }).slice(0, 8).map(el => el.tagName.toLowerCase() + '.' + el.className);
+              issues.push({ type:'horizontal overflow', documentWidth:doc.documentElement.scrollWidth, offenders });
+            }
+            const links = Array.from(doc.querySelectorAll('.site-nav a'));
+            links.forEach((link, i) => {
+              const a = link.getBoundingClientRect();
+              if (width <= 760 && a.height < 43) issues.push({ type:'small touch target', label:link.textContent.trim() });
+              links.slice(i + 1).forEach(other => {
+                const b = other.getBoundingClientRect();
+                if (Math.min(a.right,b.right) - Math.max(a.left,b.left) > 1 && Math.min(a.bottom,b.bottom) - Math.max(a.top,b.top) > 1) issues.push({ type:'overlapping navigation' });
+              });
+            });
+            reports.push({ width, path, zoom, issues });
+          };
+          measure(100);
+          if ([320, 768, 1440].includes(width)) {
+            doc.documentElement.style.fontSize = (parseFloat(frame.contentWindow.getComputedStyle(doc.documentElement).fontSize) * 2) + 'px';
+            measure(200);
+          }
+          clearTimeout(timeout);
+          frame.remove();
+          resolve();
+        };
+        frame.src = path;
+        document.getElementById('stage').appendChild(frame);
+      })));
+    }
+  }
+  const failures = reports.filter(item => item.error || item.issues.length);
+  document.getElementById('results').textContent = JSON.stringify({ complete:true, checks:reports.length, widths:sizes, failures });
+  document.title = 'Responsive checks complete';
+})();
+</script></body></html>

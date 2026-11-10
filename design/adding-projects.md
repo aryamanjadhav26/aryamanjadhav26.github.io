@@ -1,0 +1,20 @@
+# Adding a project
+
+The portfolio expands on projects rather than reproducing the resume. Keep the homepage focused on a short introduction, selected work, and contact. Employment history, an education section, and a standalone skills list are not part of that flow; tools and affiliations can explain the relevant project. The resume remains available as a separate link.
+
+1. Create `_projects/project-slug/index.md` from `Reference/project-template.md`.
+2. Set the stable permalink, plain-language summary, contribution, and actual status.
+3. Use an existing discipline (`Hardware`, `Real-Time Systems`, `RF & Sensing`, or `Software & ML`) or add a new one. Filter buttons are generated automatically.
+4. Set `card_order` to control placement, with lower numbers first. MARGA is the requested lead at -50; AIGen follows at -40, FPGA at -30, offline information at -20, and the spring posture study at -10. The first four are featured; posture remains in the full index and is linked from MARGA as the precursor. Preserve MARGA's leading placement unless the owner changes this preference. Use the known `period` rather than inventing precise dates. Set `featured: true` for homepage entries; set `earlier_work: true` and `featured: false` for historical work. The full index includes all non-hidden entries.
+5. Keep `hidden: true` while drafting, then remove it or set it to false when ready. Hidden entries are omitted from indexes, next-project navigation, and the sitemap; their generated pages carry noindex metadata. Do not put confidential content in a deployed draft: a known URL remains accessible.
+6. Set `animation` to a matching case in `_includes/project-animation.html`: radar, circuit, broadcast, posture, pipeline, rectenna, racing, processor, leaf, or database. Add a new case when needed. These illustrations use shared styles, play once in view for under four seconds, and remain static without JavaScript or with reduced motion. Project pages place the conceptual illustration in an optional disclosure with a replay button. Keep them conceptual, not presented as measured outputs. The legacy architecture diagrams are no longer rendered. `card_visual` remains an optional static list fallback when no animation is supplied.
+7. Add source, report, paper, poster, or demo links only when those resources exist. Preserve existing permalinks when editing.
+8. Run `bundle exec jekyll build`. Review the homepage, index, and new project at desktop and mobile widths.
+
+The intro and contact details live in `_config.yml`. Navigation and project content never wait for the typed intro. Assistive technology reads the full sentence, reduced-motion users get static text, and it plays once per browser-tab session.
+
+Keep index rows brief: title, one sentence, area, and status. Contributions, dates, and tools belong inside the case study. Use `report_secondary: true` to omit a report from the top resource bar, and link it in further reading instead. Research repositories can contain abandoned experiments; use the owner-confirmed narrative rather than publishing the full experiment inventory.
+
+Project pages may include an optional **Skills applied** disclosure. Choose two or three transferable skills that help a reader understand your contribution. Store each as a `name` and a brief `application` explaining what you did with it. Ground every entry in the writeup. Name a language, library, or platform within that explanation when it matters; a material, device, project topic, or dependency is not itself a skill. Avoid overlapping labels, generic soft skills, planned capabilities, and claims belonging to teammates or AI agents. Omit the disclosure when it adds no useful information. Project cards stay free of skill inventories.
+
+Use the writeup to explain what a resume bullet cannot: why the problem mattered, the alternatives considered, the decisions made, what was built or tested, and what the results taught you. Add only supported detail; do not invent experiments, outcomes, or lessons to fill a template.
