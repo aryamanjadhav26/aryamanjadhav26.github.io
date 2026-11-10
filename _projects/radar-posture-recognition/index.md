@@ -7,7 +7,7 @@ category: Perception & Generalization
 discipline: RF & Sensing
 card_order: -10
 animation: posture
-featured: false
+featured: true
 year: 2026
 period: Spring 2026
 project_status: Completed study

@@ -23,7 +23,7 @@ Open the local address printed by Jekyll. GitHub Pages continues to use the exis
 
 The homepage moves from a short personal introduction to selected projects and contact. It does not repeat employment history, education, or a standalone skills inventory; the resume remains linked in navigation and contact. Project writeups expand on the work with problems, design choices, individual contributions, experiments, results, and lessons. Tools and research affiliations belong in the relevant project's context.
 
-The homepage shows four selected projects with `featured: true`: MARGA, AIGen, FPGA, and offline disaster information. Both lists follow `card_order` (lower first); choose placement by contribution and visitor relevance, keeping MARGA as the lead research project. Use `period` for the known date/term and `earlier_work: true` for historical entries. The full index includes every entry without `hidden: true`; filters come from each project's `discipline`. Existing project URLs are retained.
+The homepage shows five selected projects with `featured: true`: MARGA, AIGen, FPGA, offline disaster information, and radar posture recognition. Both lists follow `card_order` (lower first); choose placement by contribution and visitor relevance, keeping MARGA as the lead research project. Use `period` for the known date/term and `earlier_work: true` for historical entries. The full index includes every entry without `hidden: true`; filters come from each project's `discipline`. Existing project URLs are retained.
 
 ## Presentation
 
