@@ -33,7 +33,7 @@ hero_intro: >-
 
 # Link your resume.
 # You can place your resume in assets/resume/{resume.pdf} or add an external link.
-resume-url: https://drive.google.com/file/d/1MQIOWfDIO7hSiUIkRpIMeyC2JptuKO8Q/view?usp=sharing
+resume-url: /assets/resume/Resume.pdf
 
 
 
@@ -216,5 +216,4 @@ exclude:
   - Reference
   - README.md
   - assets/readme
-  - assets/resume/Resume.pdf
   - _projects/transparent-rectenna-array/poster.pdf
